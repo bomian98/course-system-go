@@ -2,8 +2,10 @@ package controllers
 
 import (
 	"course-system/app/common"
+	"course-system/app/services"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
 )
 
 func BookCourse(c *gin.Context) {
@@ -14,12 +16,23 @@ func BookCourse(c *gin.Context) {
 		})
 		return
 	}
+	stu_id, _ := strconv.Atoi(request.StudentID)
+	cos_id, _ := strconv.Atoi(request.CourseID)
+	stu_id_uint, cos_id_uint := uint(stu_id), uint(cos_id)
+	if !services.UserCourseService.IsStudentExisted(stu_id_uint) {
+		c.JSON(http.StatusOK, common.BookCourseResponse{Code: common.StudentNotExisted})
+		return
+	}
+	if !services.CourseService.IsCourseExisted(cos_id_uint) {
+		c.JSON(http.StatusOK, common.BookCourseResponse{Code: common.CourseNotExisted})
+		return
+	}
 	// 请求课程
 	// 课程容量不足
 	c.JSON(http.StatusOK, common.BookCourseResponse{
 		Code: common.CourseNotAvailable,
 	})
-	//
+	// 课程请求成功
 	c.JSON(http.StatusOK, common.BookCourseResponse{
 		Code: common.CourseHasBound,
 	})
