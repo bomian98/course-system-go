@@ -254,8 +254,8 @@ type ScheduleCourseResponse struct {
 // 抢课部分
 
 type BookCourseRequest struct {
-	StudentID string
-	CourseID  string
+	StudentID string //`json:"StudentID" xml:"StudentID" binding:"required"`
+	CourseID  string //`json:"CourseID" xml:"CourseID" binding:"required"`
 }
 
 // 课程已满返回 CourseNotAvailable
@@ -268,13 +268,13 @@ type GetStudentCourseRequest struct {
 	StudentID string
 }
 
-type Courselist struct {
+type CourseListStruct struct {
 	CourseList []TCourse
 }
 
 type GetStudentCourseResponse struct {
-	Code       ErrNo
-	CourseList Courselist
+	Code ErrNo
+	Data CourseListStruct
 	//Data struct {
 	//	CourseList []TCourse
 	//}

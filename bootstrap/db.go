@@ -1,6 +1,7 @@
 package bootstrap
 
 import (
+	"course-system/app/models"
 	"course-system/global"
 	"fmt"
 	"gorm.io/driver/mysql"
@@ -55,9 +56,9 @@ func initMySqlGorm() *gorm.DB {
 // 数据库表初始化
 func initMySqlTables(db *gorm.DB) {
 	err := db.AutoMigrate(
-	//models.User{},
-	//models.UserCourse{},
-	//models.TCourse{},
+		models.User{},
+		models.UserCourse{},
+		models.TCourse{},
 	)
 	if err != nil {
 		fmt.Println("migrate table failed, err:", err)

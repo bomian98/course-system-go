@@ -9,7 +9,7 @@ type User struct {
 	SoftDeletes
 }
 
-type UserType int
+type UserType int8
 
 const (
 	Admin   UserType = 1
