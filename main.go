@@ -20,7 +20,10 @@ func main() {
 		}
 	}()
 
-	// 配置路由
+	// 初始化Redis
+	global.App.Redis = bootstrap.InitializeRedis()
+
+	// 启动服务器
 	bootstrap.RunServer()
 
 }

@@ -64,6 +64,8 @@ func initMySqlTables(db *gorm.DB) {
 		fmt.Println("migrate table failed, err:", err)
 		//global.App.Log.Error("migrate table failed", zap.Any("err", err))
 		os.Exit(0)
+	} else {
+		fmt.Println("MySQL 数据库成功初始化")
 	}
 }
 
