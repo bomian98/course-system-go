@@ -694,3 +694,882 @@
 
 2022/02/14 23:27:47 D:/Go/System/app/services/user.go:19 SLOW SQL >= 200ms
 [240.185ms] [rows:1] INSERT INTO `users` (`username`,`nickname`,`password`,`user_type`,`deleted_at`) VALUES ('adhkhjkhfsdrrrr','wwww8','adhAk1hjkhfsd','1',NULL)
+
+2022/02/15 12:23:14 D:/Go/System/bootstrap/db.go:46
+[error] failed to initialize database, got error dial tcp 180.184.74.25:3306: connectex: A socket operation was attempted to an unreachable network.
+
+2022/02/15 12:26:47 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[51.861ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:26:47 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[112.701ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:26:48 D:/Go/System/bootstrap/db.go:108
+[105.808ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 12:26:48 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[46.861ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:26:48 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[121.603ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:26:48 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[105.787ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 12:26:48 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[56.895ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:26:48 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[107.158ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:26:48 D:/Go/System/bootstrap/db.go:108
+[111.140ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 12:27:28 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[45.881ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:27:28 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[104.796ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:27:28 D:/Go/System/bootstrap/db.go:108
+[115.706ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 12:27:28 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[47.841ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:27:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[105.796ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:27:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[104.640ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 12:27:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[47.873ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:27:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[102.131ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:27:29 D:/Go/System/bootstrap/db.go:108
+[104.877ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 12:28:43 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.887ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:28:43 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[107.693ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:28:43 D:/Go/System/bootstrap/db.go:108
+[112.766ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 12:28:43 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[51.854ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:28:43 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[98.708ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:28:43 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[98.695ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 12:28:43 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[47.830ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:28:44 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[97.811ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:28:44 D:/Go/System/bootstrap/db.go:108
+[102.788ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 12:33:55 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.870ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:33:55 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[102.736ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:33:55 D:/Go/System/bootstrap/db.go:108
+[122.745ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 12:33:55 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[67.808ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:33:55 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[99.759ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:33:55 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[106.749ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 12:33:55 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[51.874ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:33:56 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[109.668ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:33:56 D:/Go/System/bootstrap/db.go:108
+[105.704ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 12:34:33 D:/Go/System/app/services/user.go:28 SLOW SQL >= 200ms
+[209.266ms] [rows:1] UPDATE `users` SET `nickname`='wsndd' WHERE ID = '1' AND `users`.`deleted_at` IS NULL
+
+2022/02/15 12:36:10 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[48.912ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:36:10 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[109.746ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:36:10 D:/Go/System/bootstrap/db.go:108
+[130.644ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 12:36:10 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[71.806ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:36:10 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[101.718ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:36:10 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[104.746ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 12:36:10 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[55.828ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:36:10 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[109.711ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:36:10 D:/Go/System/bootstrap/db.go:108
+[114.682ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 12:36:13 D:/Go/System/app/services/user.go:29 SLOW SQL >= 200ms
+[205.691ms] [rows:0] UPDATE `users` SET `nickname`='wsndd' WHERE ID = 1 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 12:37:03 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[48.836ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:37:03 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[109.663ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:37:03 D:/Go/System/bootstrap/db.go:108
+[109.790ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 12:37:03 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[69.728ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:37:03 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[124.742ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:37:03 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[105.716ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 12:37:03 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.819ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:37:03 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[100.731ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:37:04 D:/Go/System/bootstrap/db.go:108
+[119.679ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 12:37:07 D:/Go/System/app/services/user.go:30
+[191.086ms] [rows:0] UPDATE `users` SET `nickname`='wsndd' WHERE ID = 1 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 12:37:12 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[223.667ms] [rows:0] UPDATE `users` SET `nickname`='wsndd' WHERE ID = 1 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 12:38:18 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[205.168ms] [rows:1] UPDATE `users` SET `nickname`='wsd' WHERE ID = 1 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 12:39:12 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[49.912ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:39:12 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[102.739ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:39:12 D:/Go/System/bootstrap/db.go:108
+[112.704ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 12:39:12 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.879ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:39:12 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[106.723ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:39:12 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[112.710ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 12:39:12 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[50.864ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 12:39:12 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[108.148ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 12:39:12 D:/Go/System/bootstrap/db.go:108
+[110.995ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:17:18 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.849ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:17:18 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[112.115ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:17:18 D:/Go/System/bootstrap/db.go:108
+[108.703ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:17:18 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[55.362ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:17:18 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[111.557ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:17:19 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[108.601ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:17:19 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.357ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:17:19 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[105.840ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:17:19 D:/Go/System/bootstrap/db.go:108
+[112.829ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:17:28 D:/Go/System/app/services/user.go:29 SLOW SQL >= 200ms
+[222.861ms] [rows:1] UPDATE `users` SET `nickname`='wsd' WHERE ID = 2 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:18:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.716ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:18:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[111.544ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:18:39 D:/Go/System/bootstrap/db.go:108
+[118.653ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:18:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.858ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:18:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[113.705ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:18:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[117.677ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:18:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.918ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:18:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.624ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:18:39 D:/Go/System/bootstrap/db.go:108
+[112.701ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:19:38 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[248.973ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-15 15:19:38.172' WHERE ID = 2 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:20:05 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[224.999ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:20:05.19' WHERE ID = 2 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:21:16 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[224.128ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-15 15:21:16.441' WHERE ID = 3 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:21:25 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[307.110ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:21:25.604' WHERE ID = 0 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:21:31 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[218.007ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:21:31.251' WHERE ID = 0 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:21:57 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[230.191ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:21:57.535' WHERE ID = 0 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:22:07 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[220.848ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-15 15:22:06.905' WHERE ID = 4 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:22:13 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[218.482ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:22:13.806' WHERE ID = 4 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:39:42 D:/Go/System/app/services/user.go:37 SLOW SQL >= 200ms
+[227.128ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:39:42.598' WHERE ID = 4 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:40:08 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.859ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:40:08 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.691ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:40:08 D:/Go/System/bootstrap/db.go:108
+[114.697ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:40:08 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.836ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:40:09 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.693ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:40:09 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[119.680ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:40:09 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[57.846ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:40:09 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[123.670ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:40:09 D:/Go/System/bootstrap/db.go:108
+[127.658ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:40:09 D:/Go/System/app/services/user.go:50 record not found
+[114.468ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:43:51 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.879ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:43:51 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[115.756ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:43:52 D:/Go/System/bootstrap/db.go:108
+[114.779ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:43:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[67.787ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:43:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[112.737ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:43:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[121.748ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:43:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[60.874ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:43:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[116.613ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:43:52 D:/Go/System/bootstrap/db.go:108
+[114.688ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:43:56 D:/Go/System/app/services/user.go:50 record not found
+[114.226ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:44:32 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[53.800ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:44:32 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[111.704ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:44:32 D:/Go/System/bootstrap/db.go:108
+[117.971ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:44:32 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.886ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:44:32 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[115.687ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:44:32 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[123.907ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:44:32 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.397ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:44:33 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[115.962ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:44:33 D:/Go/System/bootstrap/db.go:108
+[119.514ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:44:34 D:/Go/System/app/services/user.go:52 record not found
+[125.223ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:48:13 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.847ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:48:13 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.671ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:48:13 D:/Go/System/bootstrap/db.go:108
+[118.682ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:48:13 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[55.909ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:48:13 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.772ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:48:13 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[124.788ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:48:13 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[57.924ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:48:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[116.692ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:48:14 D:/Go/System/bootstrap/db.go:108
+[120.627ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:48:16 D:/Go/System/app/services/user.go:52 record not found
+[123.326ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:48:16 D:/Go/System/app/services/user.go:42 SLOW SQL >= 200ms
+[229.135ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:48:16.702' WHERE ID = 4 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:48:51 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.884ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:48:51 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[116.634ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:48:51 D:/Go/System/bootstrap/db.go:108
+[120.724ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:48:51 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[56.821ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:48:51 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[115.690ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:48:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[129.850ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:48:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[57.991ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:48:52 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[115.507ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:48:52 D:/Go/System/bootstrap/db.go:108
+[120.025ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:48:56 D:/Go/System/app/services/user.go:52 record not found
+[120.156ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:48:57 D:/Go/System/app/services/user.go:42 SLOW SQL >= 200ms
+[228.298ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:48:56.935' WHERE ID = 4 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:49:19 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[53.776ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:49:19 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[104.881ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:49:19 D:/Go/System/bootstrap/db.go:108
+[108.788ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:49:19 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.858ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:49:19 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.772ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:49:20 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[128.649ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:49:20 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.802ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:49:20 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[109.722ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:49:20 D:/Go/System/bootstrap/db.go:108
+[119.887ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:49:27 D:/Go/System/app/services/user.go:51 record not found
+[125.365ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:49:27 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[220.081ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:49:27.674' WHERE ID = 4 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:49:46 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[53.885ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:49:46 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.942ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:49:46 D:/Go/System/bootstrap/db.go:108
+[129.649ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:49:46 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[66.890ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:49:46 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[124.708ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:49:46 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[127.620ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:49:46 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[57.899ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:49:46 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[116.056ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:49:47 D:/Go/System/bootstrap/db.go:108
+[119.379ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:49:51 D:/Go/System/app/services/user.go:51 record not found
+[118.574ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:49:51 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[230.079ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 15:49:51.407' WHERE ID = 4 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:50:04 D:/Go/System/app/services/user.go:51
+[115.778ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:50:10 D:/Go/System/app/services/user.go:51
+[119.845ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:50:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.859ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:50:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[104.971ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:50:38 D:/Go/System/bootstrap/db.go:108
+[114.764ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:50:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[57.836ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:50:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[106.717ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:50:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[117.680ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:50:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[55.855ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:50:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[104.686ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:50:39 D:/Go/System/bootstrap/db.go:108
+[111.730ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:50:40 D:/Go/System/app/services/user.go:51
+[108.220ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:50:54 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.863ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:50:54 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[109.700ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:50:54 D:/Go/System/bootstrap/db.go:108
+[118.718ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:50:54 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.882ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:50:54 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[113.652ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:50:54 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[131.717ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:50:54 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[57.879ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:50:54 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.688ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:50:54 D:/Go/System/bootstrap/db.go:108
+[110.705ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:51:00 D:/Go/System/app/services/user.go:51
+[119.709ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:51:31 D:/Go/System/app/services/user.go:51 record not found
+[118.420ms] [rows:0] SELECT * FROM `users` WHERE ID = 2 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:51:31 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[225.612ms] [rows:0] UPDATE `users` SET `nickname`='wsd' WHERE ID = 2 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:51:50 D:/Go/System/app/services/user.go:51
+[114.482ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:52:33 D:/Go/System/app/services/user.go:51
+[110.496ms] [rows:1] SELECT * FROM `users` WHERE ID = 1 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:53:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.816ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:53:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.679ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:53:14 D:/Go/System/bootstrap/db.go:108
+[122.690ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 15:53:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[51.821ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:53:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[111.740ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:53:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[124.628ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 15:53:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.846ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 15:53:15 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.696ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 15:53:15 D:/Go/System/bootstrap/db.go:108
+[108.785ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 15:53:19 D:/Go/System/app/services/user.go:51
+[115.510ms] [rows:1] SELECT * FROM `users` WHERE ID = 1 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:53:19 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[218.806ms] [rows:0] UPDATE `users` SET `nickname`='wsd' WHERE ID = 1 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 15:53:27 D:/Go/System/app/services/user.go:51 record not found
+[110.141ms] [rows:0] SELECT * FROM `users` WHERE ID = 2 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:53:54 D:/Go/System/app/services/user.go:51
+[110.042ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 15:53:54 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[220.717ms] [rows:1] UPDATE `users` SET `nickname`='wsd' WHERE ID = 5 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 16:10:07 D:/Go/System/app/services/user.go:51 record not found
+[115.257ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:11:10 D:/Go/System/app/services/user.go:51
+[115.228ms] [rows:1] SELECT * FROM `users` WHERE ID = 1 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:11:10 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[226.444ms] [rows:0] UPDATE `users` SET `nickname`='wsd' WHERE ID = 1 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 16:11:14 D:/Go/System/app/services/user.go:51 record not found
+[113.377ms] [rows:0] SELECT * FROM `users` WHERE ID = 2 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:11:17 D:/Go/System/app/services/user.go:51 record not found
+[118.101ms] [rows:0] SELECT * FROM `users` WHERE ID = 3 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:11:22 D:/Go/System/app/services/user.go:51 record not found
+[113.077ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:11:26 D:/Go/System/app/services/user.go:51
+[115.320ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:11:26 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[214.402ms] [rows:0] UPDATE `users` SET `nickname`='wsd' WHERE ID = 5 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 16:11:47 D:/Go/System/app/services/user.go:51 record not found
+[114.221ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:11:55 D:/Go/System/app/services/user.go:51 record not found
+[115.778ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:12:16 D:/Go/System/app/services/user.go:51 record not found
+[112.289ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:12:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[52.892ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 16:12:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.693ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 16:12:29 D:/Go/System/bootstrap/db.go:108
+[115.686ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 16:12:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.842ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 16:12:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.742ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 16:12:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[115.676ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 16:12:29 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.831ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 16:12:30 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[112.704ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 16:12:30 D:/Go/System/bootstrap/db.go:108
+[116.712ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 16:12:30 D:/Go/System/app/services/user.go:51 record not found
+[107.231ms] [rows:0] SELECT * FROM `users` WHERE ID = 4 AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:16:51 D:/Go/System/app/services/user.go:13 record not found
+[115.363ms] [rows:0] SELECT * FROM `users` WHERE username = 'adhkhjkhfsdrrr' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:16:52 D:/Go/System/app/services/user.go:18 SLOW SQL >= 200ms
+[221.241ms] [rows:1] INSERT INTO `users` (`username`,`nickname`,`password`,`user_type`,`deleted_at`) VALUES ('adhkhjkhfsdrrr','wwww8','adhAk1hjkhfsd','1',NULL)
+
+2022/02/15 16:18:14 D:/Go/System/app/services/user.go:13
+[111.445ms] [rows:1] SELECT * FROM `users` WHERE username = 'adhkhjkhfsdrrr' AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:57:57 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[61.833ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 16:57:57 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[111.772ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 16:57:57 D:/Go/System/bootstrap/db.go:108
+[118.708ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 16:57:57 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.874ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 16:57:57 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[109.701ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 16:57:57 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[125.635ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 16:57:57 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.495ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 16:57:58 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[122.059ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 16:57:58 D:/Go/System/bootstrap/db.go:108
+[143.549ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 16:58:15 D:/Go/System/app/services/user.go:13
+[116.902ms] [rows:1] SELECT * FROM `users` WHERE username = 'adhkhjkhfsdrrr' ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:58:39 D:/Go/System/app/services/user.go:51
+[140.918ms] [rows:1] SELECT * FROM `users` WHERE ID = 6 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 16:58:39 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[242.402ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-15 16:58:39.657' WHERE ID = 6 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 16:58:52 D:/Go/System/app/services/user.go:13
+[123.277ms] [rows:1] SELECT * FROM `users` WHERE username = 'adhkhjkhfsdrrr' ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:01:54 D:/Go/System/app/services/user.go:51
+[109.701ms] [rows:1] SELECT * FROM `users` WHERE ID = 6 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:01:54 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[229.787ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 17:01:54.476' WHERE ID = 6 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 17:02:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.803ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:02:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[113.698ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:02:14 D:/Go/System/bootstrap/db.go:108
+[119.732ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 17:02:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.860ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:02:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[112.698ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:02:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[126.675ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 17:02:14 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.871ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:02:15 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[131.582ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:02:15 D:/Go/System/bootstrap/db.go:108
+[121.752ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 17:02:16 D:/Go/System/app/services/user.go:51
+[125.389ms] [rows:1] SELECT * FROM `users` WHERE ID = 6 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:02:16 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[233.376ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 17:02:16.545' WHERE ID = 6 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 17:03:28 D:/Go/System/app/services/user.go:51
+[120.318ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:03:28 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[223.315ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-15 17:03:28.551' WHERE ID = 5 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 17:04:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.883ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:04:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[111.693ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:04:40 D:/Go/System/bootstrap/db.go:108
+[122.754ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 17:04:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[55.855ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:04:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.757ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:04:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[114.707ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 17:04:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[60.757ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:04:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[115.688ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:04:40 D:/Go/System/bootstrap/db.go:108
+[134.791ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 17:04:42 D:/Go/System/app/services/user.go:51
+[115.511ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:04:43 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[246.187ms] [rows:0] UPDATE `users` SET `deleted_at`='2022-02-15 17:04:42.929' WHERE ID = 5 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 17:10:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[53.832ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:10:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[121.753ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:10:40 D:/Go/System/bootstrap/db.go:108
+[115.799ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/15 17:10:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[60.839ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:10:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[124.636ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:10:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[121.689ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/15 17:10:40 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.841ms] [rows:-] SELECT DATABASE()
+
+2022/02/15 17:10:41 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[126.693ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/15 17:10:41 D:/Go/System/bootstrap/db.go:108
+[119.856ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/15 17:10:51 D:/Go/System/app/services/user.go:51
+[110.635ms] [rows:1] SELECT * FROM `users` WHERE ID = 5 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:11:00 D:/Go/System/app/services/user.go:51
+[116.420ms] [rows:1] SELECT * FROM `users` WHERE ID = 1 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:11:00 D:/Go/System/app/services/user.go:41 SLOW SQL >= 200ms
+[215.536ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-15 17:11:00.36' WHERE ID = 1 AND `users`.`deleted_at` IS NULL
+
+2022/02/15 17:11:03 D:/Go/System/app/services/user.go:51
+[115.449ms] [rows:1] SELECT * FROM `users` WHERE ID = 1 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:21:44 D:/Go/System/app/services/user.go:51
+[112.233ms] [rows:1] SELECT * FROM `users` WHERE ID = 4 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:22:20 D:/Go/System/app/services/user.go:13
+[113.580ms] [rows:1] SELECT * FROM `users` WHERE username = 'adhkhjkhfsdrrr' ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:24:15 D:/Go/System/app/services/user.go:13 record not found
+[117.246ms] [rows:0] SELECT * FROM `users` WHERE username = 'adhkkhfsdrrrA' ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:24:15 D:/Go/System/app/services/user.go:18 SLOW SQL >= 200ms
+[225.363ms] [rows:1] INSERT INTO `users` (`username`,`nickname`,`password`,`user_type`,`deleted_at`) VALUES ('adhkkhfsdrrrA','wwww8','adhAk1hjkhfsd','1',NULL)
+
+2022/02/15 17:24:52 D:/Go/System/app/services/user.go:51
+[116.911ms] [rows:1] SELECT * FROM `users` WHERE ID = 7 ORDER BY `users`.`id` LIMIT 1
+
+2022/02/15 17:24:52 D:/Go/System/app/services/user.go:30 SLOW SQL >= 200ms
+[220.780ms] [rows:1] UPDATE `users` SET `nickname`='wsd' WHERE ID = 7 AND `users`.`deleted_at` IS NULL

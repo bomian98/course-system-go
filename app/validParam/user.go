@@ -41,3 +41,9 @@ func CreateUserValidParam(request common.CreateMemberRequest) bool {
 	err := validate.Struct(request)
 	return diyValidParam(request) && (err == nil)
 }
+
+func UpdateUserValidParam(request common.UpdateMemberRequest) bool {
+	validate := validator.New()
+	err := validate.Struct(request)
+	return err == nil
+}

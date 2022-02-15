@@ -12,8 +12,8 @@ func SetApiGroupRoutes(router *gin.RouterGroup) {
 	router.POST("/member/create", controller.CreateUser)
 	router.GET("/member")
 	router.GET("/member/list")
-	router.POST("/member/update")
-	router.POST("/member/delete")
+	router.POST("/member/update", controller.UpdateUser)
+	router.POST("/member/delete", controller.DeleteUser)
 
 	// 登录
 	router.POST("/auth/login")

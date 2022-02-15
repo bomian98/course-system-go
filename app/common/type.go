@@ -110,7 +110,7 @@ type GetMemberListResponse struct {
 
 type UpdateMemberRequest struct {
 	UserID   string
-	Nickname string
+	Nickname string `validate:"required,min=4,max=20"`
 }
 
 type UpdateMemberResponse struct {
