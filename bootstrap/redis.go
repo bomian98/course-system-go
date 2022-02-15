@@ -1,9 +1,10 @@
 package bootstrap
 
 import (
+	"context"
 	"course-system/global"
 	"fmt"
-	"github.com/go-redis/redis"
+	"github.com/go-redis/redis/v8"
 )
 
 func InitializeRedis() *redis.Client {
@@ -12,7 +13,7 @@ func InitializeRedis() *redis.Client {
 		Password: global.App.Config.Redis.Password, // no password set
 		DB:       global.App.Config.Redis.DB,       // use default DB
 	})
-	_, err := client.Ping().Result()
+	_, err := client.Ping(context.Background()).Result()
 	if err != nil {
 		fmt.Println("Redis connect ping failed, err:", err)
 		return nil

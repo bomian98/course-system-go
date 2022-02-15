@@ -1,6 +1,10 @@
 package middleware
 
-import "github.com/go-redis/redis"
+import (
+	"context"
+	"course-system/global"
+	"github.com/go-redis/redis/v8"
+)
 
 type redisOps struct {
 	BookCourseRedisScript *redis.Script
@@ -15,13 +19,19 @@ var RedisOps = redisOps{
 3. 如果容量足够，则容量--，并将其插入到课程中
 */
 const bookCourseLuaScript = `
-if redis.call("sismember", KEYS[1], ARGS[1]) == 1 then
+if redis.call('sismember', KEYS[1], ARGV[1]) == 1 then
 	return 2
-else 
-	if redis.call("get",KEYS[2]) == 0 then
-		return 0
+else
+	if redis.call('get',KEYS[2]) == 0 then
+		return 3
 	else
-		redis.call("decr", KEYS[2])
-		redis.call("sadd", KEYS[1], ARGS[1])
+		redis.call('decr', KEYS[2])
+		redis.call('sadd', KEYS[1], ARGV[1])
 		return 1
+	end
+end
 `
+
+func (redisOps *redisOps) BookCourse(keys []string, args ...interface{}) *redis.Cmd {
+	return RedisOps.BookCourseRedisScript.Run(context.Background(), global.App.Redis, keys, args)
+}

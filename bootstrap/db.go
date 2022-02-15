@@ -39,10 +39,8 @@ func initMySqlGorm() *gorm.DB {
 	}
 	if db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{
 		DisableForeignKeyConstraintWhenMigrating: true, // 禁用自动创建外键约束
-		//Logger:                                   getGormLogger(), // 使用自定义 Logger
 	}); err != nil {
 		fmt.Println("mysql connect failed, err:", err)
-		//global.App.Log.Error("mysql connect failed, err:", zap.Any("err", err))
 		return nil
 	} else {
 		sqlDB, _ := db.DB()
@@ -68,48 +66,3 @@ func initMySqlTables(db *gorm.DB) {
 		fmt.Println("MySQL 数据库成功初始化")
 	}
 }
-
-//func getGormLogger() logger.Interface {
-//	var logMode logger.LogLevel
-//
-//	switch global.App.Config.Database.LogMode {
-//	case "silent":
-//		logMode = logger.Silent
-//	case "error":
-//		logMode = logger.Error
-//	case "warn":
-//		logMode = logger.Warn
-//	case "info":
-//		logMode = logger.Info
-//	default:
-//		logMode = logger.Info
-//	}
-//
-//	return logger.New(getGormLogWriter(), logger.Config{
-//		SlowThreshold:             200 * time.Millisecond,                          // 慢 SQL 阈值
-//		LogLevel:                  logMode,                                         // 日志级别
-//		IgnoreRecordNotFoundError: false,                                           // 忽略ErrRecordNotFound（记录未找到）错误
-//		Colorful:                  !global.App.Config.Database.EnableFileLogWriter, // 禁用彩色打印
-//	})
-//}
-//
-//// 自定义 gorm Writer
-//func getGormLogWriter() logger.Writer {
-//	var writer io.Writer
-//
-//	// 是否启用日志文件
-//	if global.App.Config.Database.EnableFileLogWriter {
-//		// 自定义 Writer
-//		writer = &lumberjack.Logger{
-//			Filename:   global.App.Config.Log.RootDir + "/" + global.App.Config.Database.LogFilename,
-//			MaxSize:    global.App.Config.Log.MaxSize,
-//			MaxBackups: global.App.Config.Log.MaxBackups,
-//			MaxAge:     global.App.Config.Log.MaxAge,
-//			Compress:   global.App.Config.Log.Compress,
-//		}
-//	} else {
-//		// 默认 Writer
-//		writer = os.Stdout
-//	}
-//	return log.New(writer, "\r\n", log.LstdFlags)
-//}

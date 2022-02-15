@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f92b1541-931e-4ac3-90c5-3ae707a590b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bootstrap/redis.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/mq.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bootstrap/log.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bootstrap/other.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/course-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/course-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/common/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/book_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/book_course.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dao/user_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/dao/user_course.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/middleware/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/redis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/user_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user_course.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/app.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +56,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -60,22 +69,75 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build course-system">
     <configuration name="go build course-system" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="course-system" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
       <package value="course-system" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/main.go" />
+      <filePath value="$PROJECT_DIR$/test.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build main.go (3)" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+      <module name="test" />
+      <working_directory value="$PROJECT_DIR$/../test" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/../test" />
+      <filePath value="$PROJECT_DIR$/../test/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go (4)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <working_directory value="$PROJECT_DIR$/../test" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/../test" />
+      <filePath value="$PROJECT_DIR$/../test/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go (5)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <working_directory value="$PROJECT_DIR$/../test" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/../test" />
+      <filePath value="$PROJECT_DIR$/../test/main.go" />
+      <output_directory value="$PROJECT_DIR$/../test" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go (6)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <working_directory value="$PROJECT_DIR$/../test" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/../test/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="course-system" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test.go" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.go build main.go (3)" />
+      <item itemvalue="Go Build.go build main.go (4)" />
+      <item itemvalue="Go Build.go build main.go (5)" />
+      <item itemvalue="Go Build.go build main.go (6)" />
+      <item itemvalue="Go Build.go build course-system" />
+      <item itemvalue="Go Build.go build test.go" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build course-system" />
+        <item itemvalue="Go Build.go build test.go" />
+        <item itemvalue="Go Build.go build main.go (6)" />
+        <item itemvalue="Go Build.go build main.go (5)" />
+        <item itemvalue="Go Build.go build main.go (4)" />
       </list>
     </recent_temporary>
   </component>

@@ -1,6 +1,7 @@
 package bootstrap
 
 import (
+	"course-system/global"
 	"course-system/routes"
 	"github.com/gin-gonic/gin"
 )
@@ -17,6 +18,5 @@ func RegisterRouter() *gin.Engine {
 // RunServer 启动服务器
 func RunServer() {
 	r := RegisterRouter()
-	//r.Run(":" + global.App.Config.App.Port)
-	r.Run() // 默认使用8080端口
+	r.Run(":" + global.App.Config.App.Port)
 }
