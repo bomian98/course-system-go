@@ -3,12 +3,17 @@ package bootstrap
 import (
 	"course-system/global"
 	"course-system/routes"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
 // RegisterRouter 注册路由
 func RegisterRouter() *gin.Engine {
 	router := gin.Default()
+	// 管理session
+	store := cookie.NewStore([]byte("secret"))
+	router.Use(sessions.Sessions("loginSession",store))
 	// 注册 api 分组路由
 	apiGroup := router.Group("/api/v1")
 	routes.SetApiGroupRoutes(apiGroup)

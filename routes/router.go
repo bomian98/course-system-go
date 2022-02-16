@@ -16,9 +16,9 @@ func SetApiGroupRoutes(router *gin.RouterGroup) {
 	router.POST("/member/delete")
 
 	// 登录
-	router.POST("/auth/login")
-	router.POST("/auth/logout")
-	router.GET("/auth/whoami")
+	router.POST("/auth/login", controllers.Login)
+	router.POST("/auth/logout", controllers.Logout)
+	router.GET("/auth/whoami", controllers.WhoAmI)
 
 	// 排课
 	router.POST("/course/create")

@@ -6,6 +6,9 @@ package common
 
 // 通用结构
 
+// cookie时间
+const CookieAge int = 10
+
 type ErrNo int
 
 const (

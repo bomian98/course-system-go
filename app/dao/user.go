@@ -15,3 +15,8 @@ func (userDao *userDao) GetUser(userID int64) (user models.User, err error) {
 	err = global.App.DB.Where("ID=?", userID).First(&user).Error
 	return
 }
+
+func (userDao *userDao) GetUserByUsername(username string) (user *models.User, err error) {
+	err = global.App.DB.Where("username=?", username).First(&user).Error
+	return
+}
