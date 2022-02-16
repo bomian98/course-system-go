@@ -19,16 +19,27 @@ var RedisOps = redisOps{
 3. 如果容量足够，则容量--，并将其插入到课程中
 */
 const bookCourseLuaScript = `
-if redis.call('sismember', KEYS[1], ARGV[1]) == 1 then
+if tonumber(redis.call('sismember', KEYS[1], ARGV[1]), 10) == 1 then
 	return 2
-else
-	if redis.call('get',KEYS[2]) == 0 then
+else 
+	if tonumber(redis.call('exists',KEYS[2]), 10) == 0 then
 		return 3
-	else
-		redis.call('decr', KEYS[2])
-		redis.call('sadd', KEYS[1], ARGV[1])
-		return 1
+	else 
+		if tonumber(redis.call('get',KEYS[2]), 10) == 0 then
+				return 0
+		else
+			redis.call('decr', KEYS[2])
+			redis.call('sadd', KEYS[1], ARGV[1])
+			return 1
+		end
 	end
+end
+`
+
+// CourseCapTestScript 创建1-20的课程，每个课程容量为100，测试使用
+const CourseCapTestScript = `
+for i=1,20 do
+	redis.call('set', 'course_cap_'..i, 100) 
 end
 `
 

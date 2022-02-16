@@ -28,8 +28,11 @@ func RunServer() {
 	r := RegisterRouter()
 
 	server := http.Server{
-		Addr:    ":" + global.App.Config.App.Port,
-		Handler: r,
+		Addr:         ":" + global.App.Config.App.Port,
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout:  120 * time.Second,
+		Handler:      r,
 	}
 
 	go func() {
@@ -48,7 +51,7 @@ func RunServer() {
 
 	defer channel()
 	if err := server.Shutdown(ctx); err != nil {
-		fmt.Println("server shutdown error")
+		log.Fatalf("server shutdown error")
 	}
 	fmt.Println("server exiting...")
 }

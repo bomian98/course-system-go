@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f92b1541-931e-4ac3-90c5-3ae707a590b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/a_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config2.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6471e78e-1e5f-4898-926a-060d4e318275.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6471e78e-1e5f-4898-926a-060d4e318275.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test/a_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test/record" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/a_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/book_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/book_course.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dao/user_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/dao/user_course.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/middleware/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/mq.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/mq.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/user_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user_course.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +71,16 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/test" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Go\course-system\app\test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Go\course-system\app\test" />
+    </key>
   </component>
   <component name="RunManager" selected="Go Build.go build course-system">
     <configuration name="go build course-system" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">

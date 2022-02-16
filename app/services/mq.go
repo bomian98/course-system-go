@@ -3,8 +3,7 @@ package services
 import (
 	"course-system/app/dao"
 	"course-system/app/models"
-	"fmt"
-	"os"
+	"log"
 )
 
 const maxChannel = 65535
@@ -21,7 +20,7 @@ func BookConsumer() {
 		//log.Println("获取到数据", *userCourse)
 		// todo: 是否将失败数据压入管道中，应该不能压入同一个管道，大概率死锁
 		if err := dao.UserCourseDao.InsertUserCourseByAddress(userCourse); err != nil {
-			fmt.Println(os.Stdout, "BookCourse插入数据库失败", err)
+			log.Println("BookCourse插入数据库失败", err)
 		}
 	}
 }
