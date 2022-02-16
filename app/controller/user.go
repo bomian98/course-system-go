@@ -77,18 +77,19 @@ func GetUser(c *gin.Context) {
 
 func GetsUser(c *gin.Context) {
 	var request common.GetMemberListRequest
-	//var res common.GetMemberListResponse
+	var res common.GetMemberListResponse
 	if err := c.ShouldBind(&request); err != nil {
 		//绑定错误
 		panic(err)
 	} else {
-		fmt.Println(request)
-		services.GetsServices(request)
-
-		//code, user := services.GetsServices(json)
-		//member := common.TMember{UserID: strconv.FormatInt(user.ID.ID, 10), Nickname: user.Nickname, Username: user.Username, UserType: user.UserType}
-		//test := common.GetMemberListResponse{Code: code, Data: member}
-		//fmt.Println("get success!")
-		//c.JSON(http.StatusOK,gin.H{code,user})
+		code, users := services.GetsServices(request)
+		members := make([]common.TMember, 0)
+		for i := 0; i < len(users); i++ {
+			members = append(members, common.TMember{UserID: strconv.FormatInt(users[i].ID.ID, 10), Nickname: users[i].Nickname, Username: users[i].Username, UserType: users[i].UserType})
+		}
+		res.Code = code
+		res.Data.MemberList = members
+		fmt.Println("gets success!")
+		c.JSON(http.StatusOK, res)
 	}
 }
