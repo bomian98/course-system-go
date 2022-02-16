@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func Login(c *gin.Context) {
@@ -27,7 +28,7 @@ func Login(c *gin.Context) {
 		s := sessions.Default(c)
 		s.Delete("camp-session")
 		if s.Save() != nil {
-			c.JSON(http.StatusOK, common.LogoutResponse{
+			c.JSON(http.StatusOK, common.LoginResponse{
 				Code: common.UnknownError,
 			})
 			return
@@ -44,7 +45,7 @@ func Login(c *gin.Context) {
 		response.Code = common.OK
 		response.Data.UserID = useridStr
 		// 生成token
-		token := services.UserService.UserMD5(useridStr)
+		token := services.UserService.UserMD5(useridStr + strconv.FormatInt(time.Now().Unix(), 10))
 		// 设置session
 		s := sessions.Default(c)
 		s.Set("camp-session", token)
@@ -179,7 +180,7 @@ func WhoAmI(c *gin.Context) {
 				// userid有问题，清除cookie
 				c.SetCookie("camp-session", cookie, -1, "/", "", false, true)
 				c.JSON(http.StatusOK, common.WhoAmIResponse{
-					Code: errno,
+					Code: common.LoginRequired,
 				})
 			}
 			return

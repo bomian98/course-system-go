@@ -21,9 +21,6 @@ func (userSevice *userSevice) GetUserByUsername(username string) (user *models.U
 	if user, err = dao.UserDao.GetUserByUsername(username); err != nil {
 		errno = common.UserNotExisted
 		return
-	} else if user.DeletedAt.Valid {
-		errno = common.UserHasDeleted
-		return
 	} else {
 		errno = common.OK
 		return
@@ -34,9 +31,6 @@ func (userSevice *userSevice) GetUserByUsername(username string) (user *models.U
 func (userSevice *userSevice) GetTMember(userID int64) (tMember common.TMember, errno common.ErrNo) {
 	if user, err := dao.UserDao.GetUser(userID); err != nil {
 		errno = common.UserNotExisted
-		return
-	} else if user.DeletedAt.Valid {
-		errno = common.UserHasDeleted
 		return
 	} else {
 		errno = common.OK
