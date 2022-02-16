@@ -2,23 +2,21 @@ package services
 
 import (
 	"System/app/common"
+	"System/app/dao"
 	"System/app/models"
-	"System/global"
-	"fmt"
-	"gorm.io/gorm"
 	"strconv"
 )
 
 func CreateUseServices(request common.CreateMemberRequest) (common.ErrNo, string) {
-	var result = global.App.DB.Unscoped().Where("username = ?", request.Username).Find(&models.User{})
-	if err := result.Error; err != nil {
+	temp, err := dao.UserDao.GetUserByUsername(request.Username)
+	if err != nil {
 		return common.UnknownError, ""
 	}
-	if result.RowsAffected != 0 { //用户名已存在
+	if temp.Username != "" {
 		return common.UserHasExisted, ""
 	}
 	user := models.User{Username: request.Username, Nickname: request.Nickname, Password: request.Password, UserType: request.UserType}
-	if err := global.App.DB.Create(&user).Error; err != nil {
+	if err := dao.UserDao.CreateUser(user); err != nil {
 		return common.UnknownError, ""
 	}
 	return common.OK, strconv.FormatInt(user.ID.ID, 10)
@@ -30,7 +28,7 @@ func UpdateServices(request common.UpdateMemberRequest) common.ErrNo {
 	if code := userStatus(id); code != common.OK {
 		return code
 	}
-	if err := global.App.DB.Where("ID = ?", id).Updates(&user).Error; err != nil {
+	if err := dao.UserDao.UpdateUser(user, id); err != nil {
 		return common.UnknownError
 	}
 	return common.OK
@@ -41,7 +39,7 @@ func DeleteServices(request common.DeleteMemberRequest) common.ErrNo {
 	if code := userStatus(id); code != common.OK {
 		return code
 	}
-	if err := global.App.DB.Where("ID = ?", id).Delete(&models.User{}).Error; err != nil {
+	if err := dao.UserDao.DeleteUser(id); err != nil {
 		return common.UnknownError
 	}
 	return common.OK
@@ -49,11 +47,11 @@ func DeleteServices(request common.DeleteMemberRequest) common.ErrNo {
 
 func GetServices(request common.GetMemberRequest) (common.ErrNo, models.User) {
 	id, _ := strconv.ParseInt(request.UserID, 10, 64)
-	user := models.User{}
 	if code := userStatus(id); code != common.OK {
-		return code, user
+		return code, models.User{}
 	}
-	if err := global.App.DB.First(&user, "ID = ?", id).Error; err != nil {
+	user, err := dao.UserDao.GetUserByID(id)
+	if err != nil {
 		return common.UnknownError, user
 	}
 	return common.OK, user
@@ -61,21 +59,19 @@ func GetServices(request common.GetMemberRequest) (common.ErrNo, models.User) {
 
 func GetsServices(request common.GetMemberListRequest) (common.ErrNo, []models.User) {
 	var users []models.User
-	if err := global.App.DB.Limit(int(request.Limit)).Offset(int(request.Offset)).Find(&users).Error; err != nil {
+	users, err := dao.UserDao.GetUsers(int(request.Offset), int(request.Limit))
+	if err != nil {
 		return common.UnknownError, users
 	}
-	fmt.Println(users)
 	return common.OK, users
 }
 
 func userStatus(ID int64) common.ErrNo { //用户是否不存在,是否已删除
-	var result *gorm.DB
-	user := new(models.User)
-	result = global.App.DB.Unscoped().Find(&user, "ID = ?", ID)
-	if err := result.Error; err != nil {
+	user, err := dao.UserDao.GetUserByID2(ID)
+	if err != nil {
 		return common.UnknownError
 	}
-	if result.RowsAffected == 0 {
+	if user.Username == "" {
 		return common.UserNotExisted
 	}
 	if user.DeletedAt.Valid == true {
@@ -85,10 +81,11 @@ func userStatus(ID int64) common.ErrNo { //用户是否不存在,是否已删除
 }
 
 func GetUserType(ID int64) (common.ErrNo, common.UserType) {
-	var result *gorm.DB
-	user := new(models.User)
-	result = global.App.DB.Find(&user, "ID = ?", ID)
-	if err := result.Error; err != nil {
+	if code := userStatus(ID); code != common.OK {
+		return code, 0
+	}
+	user, err := dao.UserDao.GetUserByID(ID)
+	if err != nil {
 		return common.UnknownError, 0
 	} else {
 		return common.OK, user.UserType

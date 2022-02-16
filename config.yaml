@@ -3,6 +3,7 @@ app: # 应用基本配置
   port: 8080 # 服务监听端口号
   app_name: gin-app # 应用名称
   app_url: http://localhost # 应用域名
+
 log:
   level: info # 日志等级
   root_dir: ./storage/logs # 日志根目录
@@ -13,6 +14,7 @@ log:
   max_size: 500 # 日志文件最大大小（MB）
   max_age: 28 # 旧文件的最大保留天数
   compress: true # 是否压缩
+
 database:
   driver: mysql # 数据库驱动
   host: 180.184.74.25 # 域名
@@ -27,4 +29,8 @@ database:
   enable_file_log_writer: true # 是否启用日志文件
   log_filename: sql.log # 日志文件名称
 
-
+redis:
+  host: '180.184.74.25'
+  port: 6379
+  db: 0
+  password: redispwd #服务器是 redispwd

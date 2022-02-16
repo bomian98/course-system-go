@@ -22,8 +22,13 @@ func main() {
 			db.Close()
 		}
 	}()
+
+	// 初始化Redis
+	global.App.Redis = bootstrap.InitializeRedis()
+
 	//初始化casbin
 	global.App.E = bootstrap.InitCasbin()
+
 	// 路由
 	bootstrap.RunServer()
 
