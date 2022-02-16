@@ -4,6 +4,7 @@ import (
 	"System/app/common"
 	"System/app/models"
 	"System/global"
+	"fmt"
 	"gorm.io/gorm"
 	"strconv"
 )
@@ -43,10 +44,33 @@ func DeleteServices(request common.DeleteMemberRequest) common.ErrNo {
 	return common.OK
 }
 
+func GetServices(request common.GetMemberRequest) (common.ErrNo, models.User) {
+	id, _ := strconv.ParseInt(request.UserID, 10, 64)
+	user := models.User{}
+	if code := userStatus(id); code != common.OK {
+		return code, user
+	}
+	if err := global.App.DB.First(&user, "ID = ?", id).Error; err != nil {
+		panic(err)
+	}
+	return common.OK, user
+}
+
+func GetsServices(request common.GetMemberListRequest) (common.ErrNo, []models.User) {
+	var user []models.User
+	if err := global.App.DB.Limit(int(request.Limit)).Offset(int(request.Offset)).Find(&user).Error; err != nil {
+		panic(err)
+	}
+	fmt.Println(user)
+	return common.OK, user
+}
+
 func userStatus(ID int64) common.ErrNo { //用户是否不存在,是否已删除
 	var result *gorm.DB
 	user := new(models.User)
 	result = global.App.DB.Unscoped().First(user, "ID = ?", ID)
+	fmt.Println(ID)
+	fmt.Println(user)
 	if result.RowsAffected == 0 {
 		return common.UserNotExisted
 	}
