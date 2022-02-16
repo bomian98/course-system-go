@@ -15,7 +15,8 @@ func CreateUser(c *gin.Context) {
 	var res common.CreateMemberResponse
 	if err := c.ShouldBindJSON(&json); err != nil {
 		//绑定错误
-		panic(err)
+		res.Code = common.UnknownError
+		c.JSON(http.StatusOK, res)
 	}
 	if validParam.CreateUserValidParam(json) == false {
 		//参数错误
@@ -34,7 +35,8 @@ func UpdateUser(c *gin.Context) {
 	var res common.UpdateMemberResponse
 	if err := c.ShouldBindJSON(&json); err != nil {
 		//绑定错误
-		panic(err)
+		res.Code = common.UnknownError
+		c.JSON(http.StatusOK, res)
 	}
 	if validParam.UpdateUserValidParam(json) == false {
 		//参数错误
@@ -52,7 +54,8 @@ func DeleteUser(c *gin.Context) {
 	var res common.DeleteMemberResponse
 	if err := c.ShouldBindJSON(&json); err != nil {
 		//绑定错误
-		panic(err)
+		res.Code = common.UnknownError
+		c.JSON(http.StatusOK, res)
 	} else {
 		res.Code = services.DeleteServices(json)
 		fmt.Println("delete success!")
@@ -65,7 +68,8 @@ func GetUser(c *gin.Context) {
 	var res common.GetMemberResponse
 	if err := c.ShouldBind(&request); err != nil {
 		//绑定错误
-		panic(err)
+		res.Code = common.UnknownError
+		c.JSON(http.StatusOK, res)
 	} else {
 		code, user := services.GetServices(request)
 		member := common.TMember{UserID: strconv.FormatInt(user.ID.ID, 10), Nickname: user.Nickname, Username: user.Username, UserType: user.UserType}
@@ -80,7 +84,8 @@ func GetsUser(c *gin.Context) {
 	var res common.GetMemberListResponse
 	if err := c.ShouldBind(&request); err != nil {
 		//绑定错误
-		panic(err)
+		res.Code = common.UnknownError
+		c.JSON(http.StatusOK, res)
 	} else {
 		code, users := services.GetsServices(request)
 		members := make([]common.TMember, 0)

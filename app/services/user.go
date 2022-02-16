@@ -10,13 +10,16 @@ import (
 )
 
 func CreateUseServices(request common.CreateMemberRequest) (common.ErrNo, string) {
-	var result = global.App.DB.Unscoped().Where("username = ?", request.Username).First(&models.User{})
+	var result = global.App.DB.Unscoped().Where("username = ?", request.Username).Find(&models.User{})
+	if err := result.Error; err != nil {
+		return common.UnknownError, ""
+	}
 	if result.RowsAffected != 0 { //用户名已存在
 		return common.UserHasExisted, ""
 	}
 	user := models.User{Username: request.Username, Nickname: request.Nickname, Password: request.Password, UserType: request.UserType}
 	if err := global.App.DB.Create(&user).Error; err != nil {
-		panic(err)
+		return common.UnknownError, ""
 	}
 	return common.OK, strconv.FormatInt(user.ID.ID, 10)
 }
@@ -28,7 +31,7 @@ func UpdateServices(request common.UpdateMemberRequest) common.ErrNo {
 		return code
 	}
 	if err := global.App.DB.Where("ID = ?", id).Updates(&user).Error; err != nil {
-		panic(err)
+		return common.UnknownError
 	}
 	return common.OK
 }
@@ -39,7 +42,7 @@ func DeleteServices(request common.DeleteMemberRequest) common.ErrNo {
 		return code
 	}
 	if err := global.App.DB.Where("ID = ?", id).Delete(&models.User{}).Error; err != nil {
-		panic(err)
+		return common.UnknownError
 	}
 	return common.OK
 }
@@ -51,26 +54,27 @@ func GetServices(request common.GetMemberRequest) (common.ErrNo, models.User) {
 		return code, user
 	}
 	if err := global.App.DB.First(&user, "ID = ?", id).Error; err != nil {
-		panic(err)
+		return common.UnknownError, user
 	}
 	return common.OK, user
 }
 
 func GetsServices(request common.GetMemberListRequest) (common.ErrNo, []models.User) {
-	var user []models.User
-	if err := global.App.DB.Limit(int(request.Limit)).Offset(int(request.Offset)).Find(&user).Error; err != nil {
-		panic(err)
+	var users []models.User
+	if err := global.App.DB.Limit(int(request.Limit)).Offset(int(request.Offset)).Find(&users).Error; err != nil {
+		return common.UnknownError, users
 	}
-	fmt.Println(user)
-	return common.OK, user
+	fmt.Println(users)
+	return common.OK, users
 }
 
 func userStatus(ID int64) common.ErrNo { //用户是否不存在,是否已删除
 	var result *gorm.DB
 	user := new(models.User)
-	result = global.App.DB.Unscoped().First(user, "ID = ?", ID)
-	fmt.Println(ID)
-	fmt.Println(user)
+	result = global.App.DB.Unscoped().Find(&user, "ID = ?", ID)
+	if err := result.Error; err != nil {
+		return common.UnknownError
+	}
 	if result.RowsAffected == 0 {
 		return common.UserNotExisted
 	}
