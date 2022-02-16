@@ -22,7 +22,8 @@ func main() {
 			db.Close()
 		}
 	}()
-
+	//初始化casbin
+	global.App.E = bootstrap.InitCasbin()
 	// 路由
 	bootstrap.RunServer()
 

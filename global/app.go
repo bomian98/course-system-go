@@ -2,6 +2,7 @@ package global
 
 import (
 	"System/config"
+	"github.com/casbin/casbin"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -12,6 +13,7 @@ type Application struct {
 	Config      config.Configuration
 	Log         *zap.Logger
 	DB          *gorm.DB
+	E           *casbin.Enforcer
 }
 
 var App = new(Application)

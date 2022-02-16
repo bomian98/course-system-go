@@ -2,6 +2,8 @@ package routes
 
 import (
 	"System/app/controller"
+	"System/app/middleware"
+	"System/global"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,7 +13,7 @@ func SetApiGroupRoutes(router *gin.RouterGroup) {
 	// 成员管理
 	router.POST("/member/create", controller.CreateUser)
 	router.GET("/member", controller.GetUser)
-	router.GET("/member/list", controller.GetsUser)
+	router.GET("/member/list", middleware.Authorize(global.App.E), controller.GetsUser)
 	router.POST("/member/update", controller.UpdateUser)
 	router.POST("/member/delete", controller.DeleteUser)
 

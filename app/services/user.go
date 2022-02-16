@@ -83,3 +83,15 @@ func userStatus(ID int64) common.ErrNo { //用户是否不存在,是否已删除
 	}
 	return common.OK
 }
+
+func GetUserType(ID int64) (common.ErrNo, common.UserType) {
+	var result *gorm.DB
+	user := new(models.User)
+	result = global.App.DB.Find(&user, "ID = ?", ID)
+	if err := result.Error; err != nil {
+		return common.UnknownError, 0
+	} else {
+		return common.OK, user.UserType
+	}
+
+}
