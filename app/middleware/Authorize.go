@@ -15,6 +15,9 @@ func Authorize(e *casbin.Enforcer) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		session := sessions.Default(c)
 		sessionValue := session.Get("userid")
+		if sessionValue == nil {
+			c.JSON(http.StatusOK, common.CreateMemberResponse{Code: common.LoginRequired})
+		}
 		ID := sessionValue.(int64)
 		//获取请求的URI
 		obj := c.Request.URL.RequestURI()
