@@ -48,11 +48,12 @@ func match(teacherID string) bool {
 func KM() {
 	for teacherID, courseIDs := range Map_teacher {
 		for _, courseID := range courseIDs {
-			Map_course[teacherID] = append(Map_course[teacherID], courseID)
+			Map_course[courseID] = append(Map_course[courseID], teacherID)
 		}
 	}
 	cnt := 0
 	for teacherID, _ := range Map_teacher {
+		vis = make(map[string]bool)
 		if match(teacherID) {
 			cnt++
 		}
