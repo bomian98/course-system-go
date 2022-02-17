@@ -73,11 +73,16 @@ func (redisOps *redisOps) SetStuList(stuID []string) {
 
 func (redisOps *redisOps) IsCourseExist(courseID string) bool {
 	result, err := global.App.Redis.Get(ctx, "course_cap_"+courseID).Int()
-	return err != redis.Nil || result >= 0
+	if err == redis.Nil {
+		return false
+	} else if result < 0 {
+		return false
+	}
+	return true
 }
 
 func (redisOps *redisOps) SetCourseCap(courseID string, cap int) {
-	RedisOps.SetCourseCapScript.Run(ctx, global.App.Redis, []string{courseID}, cap)
+	RedisOps.SetCourseCapScript.Run(ctx, global.App.Redis, []string{"course_cap_" + courseID}, cap)
 }
 
 func (redisOps redisOps) GetCourseCap(courseID string) (int, error) {

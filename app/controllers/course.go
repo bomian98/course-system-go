@@ -25,7 +25,6 @@ func CreateCourse(c *gin.Context) {
 }
 
 func GetCourse(c *gin.Context) {
-	fmt.Println("访问到controller")
 	var request common.GetCourseRequest
 	var response common.GetCourseResponse
 	if err := c.ShouldBind(&request); err != nil { // 入参绑定错误，返回错误
