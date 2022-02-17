@@ -268,14 +268,9 @@ type GetStudentCourseRequest struct {
 	StudentID string
 }
 
-type CourseListStruct struct {
-	CourseList []TCourse
-}
-
 type GetStudentCourseResponse struct {
 	Code ErrNo
-	Data CourseListStruct
-	//Data struct {
-	//	CourseList []TCourse
-	//}
+	Data struct {
+		CourseList []TCourse
+	}
 }

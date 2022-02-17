@@ -32,7 +32,7 @@ func (userCourseDao *userCourseDao) InsertUserCourseByAddress(usercourse *models
 	return err
 }
 
-func (userCourseDao *userCourseDao) GetUserCourseList(userID int64) (usercourses []models.UserCourse, err error) {
+func (userCourseDao *userCourseDao) GetUserCourseList(userID int) (usercourses []models.UserCourse, err error) {
 	err = global.App.DB.Where("ID=?", userID).Find(&usercourses).Error
 	return usercourses, err
 }

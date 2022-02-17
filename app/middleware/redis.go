@@ -12,6 +12,9 @@ type redisOps struct {
 
 var RedisOps = redisOps{
 	BookCourseRedisScript: redis.NewScript(bookCourseLuaScript)}
+var ctx = context.Background()
+
+var redisClient = global.App.Redis
 
 /**
 1. 判断数据是否已经选上了课程，如果抢上了课程，直接返回2
@@ -36,13 +39,42 @@ else
 end
 `
 
-// CourseCapTestScript 创建1-20的课程，每个课程容量为100，测试使用
-const CourseCapTestScript = `
-for i=1,20 do
-	redis.call('set', 'course_cap_'..i, 100) 
-end
-`
-
 func (redisOps *redisOps) BookCourse(keys []string, args ...interface{}) *redis.Cmd {
-	return RedisOps.BookCourseRedisScript.Run(context.Background(), global.App.Redis, keys, args)
+	return RedisOps.BookCourseRedisScript.Run(ctx, redisClient, keys, args)
+}
+
+func (redisOps *redisOps) IsStuExist(stuID string) bool {
+	return redisClient.SIsMember(ctx, "stu_list", stuID).Val()
+}
+
+func (redisOps *redisOps) IsCourseExist(courseID string) bool {
+	_, err := redisClient.Get(ctx, "course_cap_"+courseID).Int()
+	return err != redis.Nil
+}
+
+func (redisOps *redisOps) AddCourse(courseID, name, teacherID string, cap int) {
+	redisClient.SetNX(ctx, "course_cap_"+courseID, cap, 0)
+	redisOps.AddCourseInfo(courseID, name, teacherID)
+}
+
+func (redisOps *redisOps) GetStuCourse(stuId string) []string {
+	result, _ := redisClient.SMembers(ctx, "stu_course_"+stuId).Result()
+	return result
+}
+
+func (redisOps *redisOps) GetCourseInfo(courseId string) []interface{} {
+	result, _ := redisClient.HMGet(ctx, "course_info_"+courseId, "CourseID", "Name", "TeacherID").Result()
+	return result
+}
+
+func (redisOps *redisOps) DelCourseInfo(courseID string) {
+	redisClient.Del(ctx, "course_info_"+courseID)
+}
+
+func (redisOps *redisOps) AddStuCourse(stuID string, courseID string) {
+	redisClient.SAdd(ctx, "stu_course_"+stuID, courseID)
+}
+
+func (redisOps *redisOps) AddCourseInfo(courseID, name, teacherID string) {
+	redisClient.HMSet(ctx, "course_info_"+courseID, "CourseID", courseID, "Name", name, "TeacherID", teacherID)
 }
