@@ -28,7 +28,7 @@ func SetApiGroupRoutes(router *gin.RouterGroup) {
 	router.POST("/teacher/bind_course")
 	router.POST("/teacher/unbind_course")
 	router.GET("/teacher/get_course")
-	router.POST("/course/schedule")
+	router.POST("/course/schedule", controllers.ScheduleCourse)
 
 	// 抢课
 	router.GET("/student/book", func(context *gin.Context) {
