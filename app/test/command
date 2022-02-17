@@ -1,0 +1,14 @@
+mysql -uroot -pbytedancecamp
+use coursesystem;
+truncate user_courses;
+
+go test . -v 打印全部内容
+
+redis-cli
+flushall
+
+EVAL "for i=1,20 do 	redis.call('set', 'course_cap_'..i, 100) end" 0
+
+exit
+
+jmeter -n -t "C:\Users\wang\Desktop\Thread Group.jmx" -l "C:\Users\wang\Desktop\result.txt" -e -o "C:\Users\wang\Desktop\webreport"
