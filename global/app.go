@@ -13,9 +13,9 @@ type Application struct {
 	ConfigViper *viper.Viper
 	Config      config.Configuration
 	Log         *zap.Logger
+	Redis       *redis.Client
 	DB          *gorm.DB
 	E           *casbin.Enforcer
-	Redis       *redis.Client
 }
 
 var App = new(Application)

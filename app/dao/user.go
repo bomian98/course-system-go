@@ -10,7 +10,7 @@ type userDao struct {
 
 var UserDao = new(userDao)
 
-func (userDao *userDao) GetUserByUsername(username string) (user models.User, err error) {
+func (userDao *userDao) GetUserByUsername(username string) (user *models.User, err error) {
 	err = global.App.DB.Unscoped().Where("username = ?", username).Find(&user).Error
 	return
 }
@@ -25,12 +25,12 @@ func (userDao *userDao) UpdateUser(user models.User, id int64) (err error) {
 	return
 }
 
-func (userDao *userDao) GetUserByID2(id int64) (user models.User, err error) {
+func (userDao *userDao) GetUserByID2(id int64) (user *models.User, err error) {
 	err = global.App.DB.Unscoped().Find(&user, "ID = ?", id).Error
 	return
 }
 
-func (userDao *userDao) GetUserByID(id int64) (user models.User, err error) {
+func (userDao *userDao) GetUserByID(id int64) (user *models.User, err error) {
 	err = global.App.DB.Find(&user, "ID = ?", id).Error
 	return
 }
@@ -40,7 +40,7 @@ func (userDao *userDao) DeleteUser(id int64) (err error) {
 	return
 }
 
-func (userDao *userDao) GetUsers(Offset int, Limit int) (users []models.User, err error) {
+func (userDao *userDao) GetUsers(Offset int, Limit int) (users []*models.User, err error) {
 	err = global.App.DB.Limit(Limit).Offset(Offset).Find(&users).Error
 	return
 }

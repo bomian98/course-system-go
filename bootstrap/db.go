@@ -3,6 +3,7 @@ package bootstrap
 import (
 	"System/app/models"
 	"System/global"
+	"fmt"
 	"go.uber.org/zap"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"gorm.io/driver/mysql"
@@ -37,17 +38,16 @@ func initMySqlGorm() *gorm.DB {
 		dbConfig.Database + "?charset=" + dbConfig.Charset + "&parseTime=True&loc=Local"
 	mysqlConfig := mysql.Config{
 		DSN:                       dsn,   // DSN data source name
-		DefaultStringSize:         191,   // string 类型字段的默认长度
+		DefaultStringSize:         20,    // string 类型字段的默认长度
 		DisableDatetimePrecision:  true,  // 禁用 datetime 精度，MySQL 5.6 之前的数据库不支持
 		DontSupportRenameIndex:    true,  // 重命名索引时采用删除并新建的方式，MySQL 5.7 之前的数据库和 MariaDB 不支持重命名索引
 		DontSupportRenameColumn:   true,  // 用 `change` 重命名列，MySQL 8 之前的数据库和 MariaDB 不支持重命名列
 		SkipInitializeWithVersion: false, // 根据版本自动配置
 	}
 	if db, err := gorm.Open(mysql.New(mysqlConfig), &gorm.Config{
-		DisableForeignKeyConstraintWhenMigrating: true,            // 禁用自动创建外键约束
-		Logger:                                   getGormLogger(), // 使用自定义 Logger
+		DisableForeignKeyConstraintWhenMigrating: true, // 禁用自动创建外键约束
 	}); err != nil {
-		global.App.Log.Error("mysql connect failed, err:", zap.Any("err", err))
+		fmt.Println("mysql connect failed, err:", err)
 		return nil
 	} else {
 		sqlDB, _ := db.DB()
@@ -55,6 +55,19 @@ func initMySqlGorm() *gorm.DB {
 		sqlDB.SetMaxOpenConns(dbConfig.MaxOpenConns)
 		initMySqlTables(db)
 		return db
+	}
+}
+
+// 数据库表初始化
+func initMySqlTables(db *gorm.DB) {
+	err := db.AutoMigrate(
+		models.User{},
+		models.UserCourse{},
+		models.TCourse{},
+	)
+	if err != nil {
+		global.App.Log.Error("migrate table failed", zap.Any("err", err))
+		os.Exit(0)
 	}
 }
 
@@ -101,15 +114,4 @@ func getGormLogger() logger.Interface {
 		IgnoreRecordNotFoundError: false,                                           // 忽略ErrRecordNotFound（记录未找到）错误
 		Colorful:                  !global.App.Config.Database.EnableFileLogWriter, // 禁用彩色打印
 	})
-}
-
-// 数据库表初始化
-func initMySqlTables(db *gorm.DB) {
-	err := db.AutoMigrate(
-		models.User{},
-	)
-	if err != nil {
-		global.App.Log.Error("migrate table failed", zap.Any("err", err))
-		os.Exit(0)
-	}
 }

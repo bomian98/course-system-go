@@ -2545,3 +2545,120 @@
 
 2022/02/17 00:28:15 D:/Go/System/app/dao/user.go:20
 [120.329ms] [rows:1] SELECT * FROM `users` WHERE username = 'AAAAAAAf'
+
+2022/02/17 07:16:19 D:/Go/System/app/dao/user.go:20 SLOW SQL >= 200ms
+[1334.269ms] [rows:1] SELECT * FROM `users` WHERE username = 'AAAAAAAf'
+
+2022/02/17 07:17:19 D:/Go/System/app/dao/user.go:20
+[171.323ms] [rows:1] SELECT * FROM `users` WHERE username = 'AAAAAAAA'
+
+2022/02/17 07:17:30 D:/Go/System/app/dao/user.go:20
+[125.768ms] [rows:0] SELECT * FROM `users` WHERE username = 'AAAAAAAR'
+
+2022/02/17 07:17:30 D:/Go/System/app/dao/user.go:25 SLOW SQL >= 200ms
+[235.372ms] [rows:1] INSERT INTO `users` (`username`,`nickname`,`password`,`user_type`,`deleted_at`) VALUES ('AAAAAAAR','wwww8','123456Aa','1',NULL)
+
+2022/02/17 07:19:18 D:/Go/System/app/dao/user.go:20
+[117.068ms] [rows:0] SELECT * FROM `users` WHERE username = 'AAAAAAAAAAR'
+
+2022/02/17 07:19:19 D:/Go/System/app/dao/user.go:25 SLOW SQL >= 200ms
+[226.676ms] [rows:1] INSERT INTO `users` (`username`,`nickname`,`password`,`user_type`,`deleted_at`) VALUES ('AAAAAAAAAAR','wwww','123456Aa','1',NULL)
+
+2022/02/17 07:19:53 D:/Go/System/app/dao/user.go:20
+[124.373ms] [rows:1] SELECT * FROM `users` WHERE username = 'AAAAAAAAAAR'
+
+2022/02/17 07:20:01 D:/Go/System/app/dao/user.go:20
+[126.089ms] [rows:0] SELECT * FROM `users` WHERE username = 'AAAAAAAAAAY'
+
+2022/02/17 07:20:01 D:/Go/System/app/dao/user.go:25 SLOW SQL >= 200ms
+[244.525ms] [rows:1] INSERT INTO `users` (`username`,`nickname`,`password`,`user_type`,`deleted_at`) VALUES ('AAAAAAAAAAY','wwwwwwwwwwwwwwwwwwww','123456Aa','1',NULL)
+
+2022/02/17 07:22:14 D:/Go/System/app/dao/user.go:35
+[121.118ms] [rows:1] SELECT * FROM `users` WHERE ID = 7
+
+2022/02/17 07:22:14 D:/Go/System/app/dao/user.go:30 SLOW SQL >= 200ms
+[242.867ms] [rows:1] UPDATE `users` SET `nickname`='wwsd' WHERE ID = 7 AND `users`.`deleted_at` IS NULL
+
+2022/02/17 07:22:46 D:/Go/System/app/dao/user.go:35
+[120.118ms] [rows:1] SELECT * FROM `users` WHERE ID = 7
+
+2022/02/17 07:22:46 D:/Go/System/app/dao/user.go:45 SLOW SQL >= 200ms
+[273.724ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-17 07:22:46.184' WHERE ID = 7 AND `users`.`deleted_at` IS NULL
+
+2022/02/17 07:22:50 D:/Go/System/app/dao/user.go:35
+[118.970ms] [rows:1] SELECT * FROM `users` WHERE ID = 7
+
+2022/02/17 07:23:17 D:/Go/System/app/dao/user.go:35
+[117.971ms] [rows:0] SELECT * FROM `users` WHERE ID = 20
+
+2022/02/17 07:26:24 D:/Go/System/app/dao/user.go:35
+[126.294ms] [rows:1] SELECT * FROM `users` WHERE ID = 7
+
+2022/02/17 07:26:29 D:/Go/System/app/dao/user.go:35
+[117.612ms] [rows:0] SELECT * FROM `users` WHERE ID = 20
+
+2022/02/17 07:26:35 D:/Go/System/app/dao/user.go:35
+[114.549ms] [rows:1] SELECT * FROM `users` WHERE ID = 8
+
+2022/02/17 07:26:35 D:/Go/System/app/dao/user.go:45 SLOW SQL >= 200ms
+[239.231ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-17 07:26:35.545' WHERE ID = 8 AND `users`.`deleted_at` IS NULL
+
+2022/02/17 07:26:40 D:/Go/System/app/dao/user.go:35
+[116.200ms] [rows:1] SELECT * FROM `users` WHERE ID = 9
+
+2022/02/17 07:26:40 D:/Go/System/app/dao/user.go:45 SLOW SQL >= 200ms
+[247.659ms] [rows:1] UPDATE `users` SET `deleted_at`='2022-02-17 07:26:40.414' WHERE ID = 9 AND `users`.`deleted_at` IS NULL
+
+2022/02/17 07:26:46 D:/Go/System/app/dao/user.go:35
+[120.222ms] [rows:0] SELECT * FROM `users` WHERE ID = 20
+
+2022/02/17 07:26:51 D:/Go/System/app/dao/user.go:35
+[130.036ms] [rows:1] SELECT * FROM `users` WHERE ID = 9
+
+2022/02/17 07:26:56 D:/Go/System/app/dao/user.go:35
+[123.546ms] [rows:1] SELECT * FROM `users` WHERE ID = 10
+
+2022/02/17 07:26:56 D:/Go/System/app/dao/user.go:40
+[114.606ms] [rows:1] SELECT * FROM `users` WHERE ID = 10 AND `users`.`deleted_at` IS NULL
+
+2022/02/17 07:27:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[54.820ms] [rows:-] SELECT DATABASE()
+
+2022/02/17 07:27:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[113.915ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/17 07:27:38 D:/Go/System/bootstrap/db.go:108
+[120.259ms] [rows:-] SELECT count(*) FROM information_schema.tables WHERE table_schema = 'wxftest' AND table_name = 'users' AND table_type = 'BASE TABLE'
+
+2022/02/17 07:27:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[59.840ms] [rows:-] SELECT DATABASE()
+
+2022/02/17 07:27:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.694ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/17 07:27:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:205
+[126.662ms] [rows:-] SELECT column_name, is_nullable, data_type, character_maximum_length, numeric_precision, numeric_scale FROM information_schema.columns WHERE table_schema = 'wxftest' AND table_name = 'users' ORDER BY ORDINAL_POSITION
+
+2022/02/17 07:27:38 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:234
+[58.842ms] [rows:-] SELECT DATABASE()
+
+2022/02/17 07:27:39 C:/Users/wxf/go/pkg/mod/gorm.io/driver/mysql@v1.2.3/migrator.go:237
+[114.696ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'wxftest%' ORDER BY SCHEMA_NAME='wxftest' DESC limit 1
+
+2022/02/17 07:27:39 D:/Go/System/bootstrap/db.go:108
+[119.526ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'wxftest' AND table_name = 'users' AND index_name = 'idx_users_deleted_at'
+
+2022/02/17 07:27:55 D:/Go/System/app/dao/user.go:44
+[59.398ms] [rows:0] SELECT * FROM `users` WHERE `users`.`deleted_at` IS NULL LIMIT 100 OFFSET 10
+
+2022/02/17 07:28:21 D:/Go/System/app/dao/user.go:44
+[61.385ms] [rows:0] SELECT * FROM `users` WHERE `users`.`deleted_at` IS NULL LIMIT 100 OFFSET 9
+
+2022/02/17 07:28:27 D:/Go/System/app/dao/user.go:44
+[68.554ms] [rows:1] SELECT * FROM `users` WHERE `users`.`deleted_at` IS NULL LIMIT 100 OFFSET 8
+
+2022/02/17 07:28:51 D:/Go/System/app/dao/user.go:44
+[56.321ms] [rows:9] SELECT * FROM `users` WHERE `users`.`deleted_at` IS NULL LIMIT 100
+
+2022/02/17 09:25:03 D:/Go/System/bootstrap/db.go:46
+[error] failed to initialize database, got error Error 1049: Unknown database 'camp'
