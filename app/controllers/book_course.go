@@ -46,9 +46,6 @@ func GetStudentCourse(c *gin.Context) {
 		return
 	}
 
-	//获取学生的课程
-	//获取学生课表
-	//返回
 	code, courseListStruct := services.UserCourseService.GetUserCourses(request.StudentID)
 	c.JSON(http.StatusOK, common.GetStudentCourseResponse{
 		Code: code, Data: courseListStruct,

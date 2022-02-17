@@ -18,8 +18,7 @@ type redisOps struct {
 }
 
 var RedisOps = redisOps{
-	BookCourseRedisScript:     redis.NewScript(bookCourseLuaScript),
-	GetUserCoursesRedisScript: redis.NewScript(getUserCoursesLuaScript)}
+	BookCourseRedisScript: redis.NewScript(bookCourseLuaScript)}
 
 /**
 1. 判断数据是否已经选上了课程，如果抢上了课程，直接返回2
@@ -44,37 +43,6 @@ else
 end
 `
 
-/**
-1. 判断数据是否在redis中，如果在，则返回课程内容
-2. 如果不在，则到磁盘中读取
-3. 如果容量足够，则容量--，并将其插入到课程中
-*/
-const getUserCoursesLuaScript = `
-local left_goods_count = redis.call('get', stock_key)
-if tonumber(left_goods_count, 10) <= 0 then
-    return 0
-else
-    redis.call('decr', stock_key)
-    redis.call('sadd', users_key, user_id)
-end
-
-if tonumber(redis.call('sismember', KEYS[1], ARGV[1]), 10) == 1 then
-	return 2
-else 
-	if tonumber(redis.call('exists',KEYS[2]), 10) == 0 then
-		return 3
-	else 
-		if tonumber(redis.call('get',KEYS[2]), 10) == 0 then
-				return 0
-		else
-			redis.call('decr', KEYS[2])
-			redis.call('sadd', KEYS[1], ARGV[1])
-			return 1
-		end
-	end
-end
-`
-
 // CourseCapTestScript 创建1-20的课程，每个课程容量为100，测试使用
 const CourseCapTestScript = `
 for i=1,20 do
@@ -86,6 +54,15 @@ func (redisOps *redisOps) BookCourse(keys []string, args ...interface{}) *redis.
 	return RedisOps.BookCourseRedisScript.Run(context.Background(), global.App.Redis, keys, args)
 }
 
+/**
+先判断数据是否在redis中
+如果数据在redis中，则判断学生是否有效（可能为nil，为防止缓存穿透）
+	如果学生有效，先通过学生id（stu_course_stuId）在hash中找到对应的课程id，再通过课程id（course_id_courseId）到hash中找到对应的课程组成课表
+	如果学生无效，code = 11
+如果数据不在redis中，则访问数据库，判断学生是否存在
+	如果学生存在，返回对应课程id的list，然后将此数据set到redis的hash中
+	如果学生不存在，code = 11且在redis的hash中插入该学生id，并置为nil
+*/
 func (redisOps *redisOps) GetUserCourses(keys []string, args ...interface{}) (code common.ErrNo, res common.CourseListStruct) {
 	// keys[0]代表redis学生课表hash的key（即stu_course_stuId），key[1]代表学生id（即stuId）
 	stuId, _ := strconv.ParseInt(keys[1], 10, 64)
