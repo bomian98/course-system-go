@@ -10,6 +10,7 @@ var Map_teacher = map[string][]string{}
 var Map_course = map[string][]string{}
 var vis = map[string]bool{} //记录课程是否已被访问过
 var p = map[string]string{} //记录当前课程被哪位老师选中
+var res = map[string]string{}
 
 func ScheduleCourse(c *gin.Context) {
 	//fmt.Println("访问到该controller了")                 // 不需要 or 后期合并时，注释掉
@@ -21,8 +22,12 @@ func ScheduleCourse(c *gin.Context) {
 		return
 	}
 	Map_teacher = request.TeacherCourseRelationShip
-	KM()
-	c.JSON(http.StatusOK, gin.H{"Code": 0, "Data": p})
+	// p中存储的是课程ID与教师ID的映射，将两个键值交换
+	for i, j := range p {
+		res[j] = i
+	}
+	//fmt.Println(res)
+	c.JSON(http.StatusOK, gin.H{"Code": 0, "Data": res})
 	return
 }
 
@@ -46,7 +51,10 @@ func KM() {
 			Map_course[teacherID] = append(Map_course[teacherID], courseID)
 		}
 	}
+	cnt := 0
 	for teacherID, _ := range Map_teacher {
-		match(teacherID)
+		if match(teacherID) {
+			cnt++
+		}
 	}
 }
