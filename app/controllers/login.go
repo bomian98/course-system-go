@@ -26,7 +26,7 @@ func Login(c *gin.Context) {
 	if errno != common.OK || strings.Compare(request.Password, user.Password) != 0 {
 		// 清除session
 		s := sessions.Default(c)
-		s.Delete("camp-session")
+		s.Clear()
 		if s.Save() != nil {
 			c.JSON(http.StatusOK, common.LoginResponse{
 				Code: common.UnknownError,
@@ -35,6 +35,7 @@ func Login(c *gin.Context) {
 		}
 		// 清除cookie
 		c.SetCookie("camp-session", "", -1, "/", "", false, true)
+		c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
 		c.JSON(http.StatusOK, common.LoginResponse{
 			Code: common.WrongPassword,
 		})
@@ -74,6 +75,16 @@ func Logout(c *gin.Context) {
 	}
 	// 获取cookie
 	if cookie, err := c.Cookie("camp-session"); err != nil { // 未获取到cookie
+		// 清除session
+		s := sessions.Default(c)
+		s.Clear()
+		if s.Save() != nil {
+			c.JSON(http.StatusOK, common.LogoutResponse{
+				Code: common.UnknownError,
+			})
+			return
+		}
+		c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
 		c.JSON(http.StatusOK, common.LogoutResponse{
 			Code: common.LoginRequired,
 		})
@@ -81,7 +92,7 @@ func Logout(c *gin.Context) {
 	} else {
 		// 清除session
 		s := sessions.Default(c)
-		s.Delete("camp-session")
+		s.Clear()
 		if s.Save() != nil {
 			c.JSON(http.StatusOK, common.LogoutResponse{
 				Code: common.UnknownError,
@@ -90,6 +101,7 @@ func Logout(c *gin.Context) {
 		}
 		// 清除cookie
 		c.SetCookie("camp-session", cookie, -1, "/", "", false, true)
+		c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
 		c.JSON(http.StatusOK, common.LogoutResponse{
 			Code: common.OK,
 		})
@@ -110,13 +122,14 @@ func WhoAmI(c *gin.Context) {
 	if cookie, err := c.Cookie("camp-session"); err != nil { // 未获取到cookie
 		// 清除session
 		s := sessions.Default(c)
-		s.Delete("camp-session")
+		s.Clear()
 		if s.Save() != nil {
 			c.JSON(http.StatusOK, common.WhoAmIResponse{
 				Code: common.UnknownError,
 			})
 			return
 		}
+		c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
 		c.JSON(http.StatusOK, common.WhoAmIResponse{
 			Code: common.LoginRequired,
 		})
@@ -132,7 +145,7 @@ func WhoAmI(c *gin.Context) {
 		}
 		if strings.Compare(token.(string), cookie) != 0 {
 			// 清除session
-			s.Delete("camp-session")
+			s.Clear()
 			if s.Save() != nil {
 				c.JSON(http.StatusOK, common.WhoAmIResponse{
 					Code: common.UnknownError,
@@ -140,6 +153,7 @@ func WhoAmI(c *gin.Context) {
 				return
 			}
 			c.SetCookie("camp-session", "", -1, "/", "", false, true)
+			c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
 			c.JSON(http.StatusOK, common.WhoAmIResponse{
 				Code: common.LoginRequired,
 			})
@@ -155,7 +169,7 @@ func WhoAmI(c *gin.Context) {
 		}
 		if userId, err := strconv.ParseInt(useridSession.(string), 10, 64); err != nil { // cookie有问题，直接清除cookie
 			// 清除session
-			s.Delete("camp-session")
+			s.Clear()
 			if s.Save() != nil {
 				c.JSON(http.StatusOK, common.WhoAmIResponse{
 					Code: common.UnknownError,
@@ -163,6 +177,7 @@ func WhoAmI(c *gin.Context) {
 				return
 			}
 			c.SetCookie("camp-session", "", -1, "/", "", false, true)
+			c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
 			c.JSON(http.StatusOK, common.WhoAmIResponse{
 				Code: common.UnknownError,
 			})
@@ -170,15 +185,22 @@ func WhoAmI(c *gin.Context) {
 		} else {
 			tMember, errno := services.UserService.GetTMember(userId)
 			if errno == common.OK {
-				// 刷新cookie?
-				// c.SetCookie("camp-session", cookie, common.CookieAge, "/", "", false, true)
 				c.JSON(http.StatusOK, common.WhoAmIResponse{
 					Code: common.OK,
 					Data: tMember,
 				})
 			} else {
+				// 清除session
+				s.Clear()
+				if s.Save() != nil {
+					c.JSON(http.StatusOK, common.WhoAmIResponse{
+						Code: common.UnknownError,
+					})
+					return
+				}
 				// userid有问题，清除cookie
 				c.SetCookie("camp-session", cookie, -1, "/", "", false, true)
+				c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
 				c.JSON(http.StatusOK, common.WhoAmIResponse{
 					Code: common.LoginRequired,
 				})
