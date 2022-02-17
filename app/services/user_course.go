@@ -5,7 +5,6 @@ import (
 	"course-system/app/dao"
 	"course-system/app/middleware"
 	"course-system/app/models"
-	"fmt"
 	"github.com/go-redis/redis/v8"
 	"strconv"
 )
@@ -64,7 +63,6 @@ func (userCourseService *userCourseService) GetUserCourses(stuId string) ([]comm
 	if !StudentExist(stuId) {
 		return courseList, common.StudentHasNoCourse
 	}
-	fmt.Println(StudentExist(stuId))
 	var courseIDList []string
 	courseIDList = middleware.RedisOps.GetStuCourse(stuId)
 	if len(courseIDList) == 0 { // 缓存中没有数据，从数据库访问
