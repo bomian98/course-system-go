@@ -3,7 +3,6 @@ package controllers
 import (
 	"course-system/app/common"
 	"course-system/app/services"
-	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -13,12 +12,13 @@ import (
 )
 
 func Login(c *gin.Context) {
-	fmt.Println("访问到该controller了") // 不需要 or 后期合并时，注释掉
+	//fmt.Println("访问到该controller了") // 不需要 or 后期合并时，注释掉
 	var request common.LoginRequest
+	var response common.LoginResponse
+	response.Data.UserID = ""
 	if err := c.ShouldBindJSON(&request); err != nil { // 入参绑定错误，返回错误
-		c.JSON(http.StatusBadRequest, common.LoginResponse{
-			Code: common.ParamInvalid,
-		})
+		response.Code = common.ParamInvalid
+		c.JSON(http.StatusOK, response)
 		return
 	}
 	// 获取用户并检查密码
@@ -28,17 +28,15 @@ func Login(c *gin.Context) {
 		s := sessions.Default(c)
 		s.Clear()
 		if s.Save() != nil {
-			c.JSON(http.StatusOK, common.LoginResponse{
-				Code: common.UnknownError,
-			})
+			response.Code = common.UnknownError
+			c.JSON(http.StatusOK, response)
 			return
 		}
 		// 清除cookie
 		c.SetCookie("camp-session", "", -1, "/", "", false, true)
 		c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
-		c.JSON(http.StatusOK, common.LoginResponse{
-			Code: common.WrongPassword,
-		})
+		response.Code = common.WrongPassword
+		c.JSON(http.StatusOK, response)
 		return
 	} else {
 		useridStr := strconv.FormatInt(user.ID.ID, 10)
@@ -52,9 +50,8 @@ func Login(c *gin.Context) {
 		s.Set("camp-session", token)
 		s.Set("userid", useridStr)
 		if s.Save() != nil {
-			c.JSON(http.StatusOK, common.LoginResponse{
-				Code: common.UnknownError,
-			})
+			response.Code = common.UnknownError
+			c.JSON(http.StatusOK, response)
 			return
 		}
 		// 设置cookie
@@ -65,11 +62,10 @@ func Login(c *gin.Context) {
 }
 
 func Logout(c *gin.Context) {
-	fmt.Println("访问到该controller了") // 不需要 or 后期合并时，注释掉
+	//fmt.Println("访问到该controller了") // 不需要 or 后期合并时，注释掉
 	var request common.LogoutRequest
 	if err := c.ShouldBindJSON(&request); err != nil { // 入参绑定错误，返回错误
-		panic(err)
-		c.JSON(http.StatusBadRequest, common.LogoutResponse{
+		c.JSON(http.StatusOK, common.LogoutResponse{
 			Code: common.ParamInvalid,
 		})
 		return
@@ -111,12 +107,13 @@ func Logout(c *gin.Context) {
 }
 
 func WhoAmI(c *gin.Context) {
-	fmt.Println("访问到该controller了") // 不需要 or 后期合并时，注释掉
+	//fmt.Println("访问到该controller了") // 不需要 or 后期合并时，注释掉
 	var request common.WhoAmIRequest
+	var response common.WhoAmIResponse
+	response.Data = *new(common.TMember)
 	if err := c.ShouldBindJSON(&request); err != nil { // 入参绑定错误，返回错误
-		c.JSON(http.StatusBadRequest, common.WhoAmIResponse{
-			Code: common.ParamInvalid,
-		})
+		response.Code = common.ParamInvalid
+		c.JSON(http.StatusOK, response)
 		return
 	}
 	// 获取cookie
@@ -125,63 +122,55 @@ func WhoAmI(c *gin.Context) {
 		s := sessions.Default(c)
 		s.Clear()
 		if s.Save() != nil {
-			c.JSON(http.StatusOK, common.WhoAmIResponse{
-				Code: common.UnknownError,
-			})
+			response.Code = common.UnknownError
+			c.JSON(http.StatusOK, response)
 			return
 		}
 		c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
-		c.JSON(http.StatusOK, common.WhoAmIResponse{
-			Code: common.LoginRequired,
-		})
+		response.Code = common.LoginRequired
+		c.JSON(http.StatusOK, response)
 		return
 	} else {
 		s := sessions.Default(c)
 		token := s.Get("camp-session")
 		if token == nil {
-			c.JSON(http.StatusOK, common.WhoAmIResponse{
-				Code: common.UnknownError,
-			})
+			response.Code = common.UnknownError
+			c.JSON(http.StatusOK, response)
 			return
 		}
 		if strings.Compare(token.(string), cookie) != 0 {
 			// 清除session
 			s.Clear()
 			if s.Save() != nil {
-				c.JSON(http.StatusOK, common.WhoAmIResponse{
-					Code: common.UnknownError,
-				})
+				response.Code = common.UnknownError
+				c.JSON(http.StatusOK, response)
 				return
 			}
 			c.SetCookie("camp-session", "", -1, "/", "", false, true)
 			c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
-			c.JSON(http.StatusOK, common.WhoAmIResponse{
-				Code: common.LoginRequired,
-			})
+			response.Code = common.LoginRequired
+			c.JSON(http.StatusOK, response)
 			return
 		}
 		// 获取TMember
 		useridSession := s.Get("userid")
 		if useridSession == nil {
-			c.JSON(http.StatusOK, common.WhoAmIResponse{
-				Code: common.UnknownError,
-			})
+			response.Code = common.UnknownError
+			c.JSON(http.StatusOK, response)
 			return
 		}
 		if userId, err := strconv.ParseInt(useridSession.(string), 10, 64); err != nil { // cookie有问题，直接清除cookie
 			// 清除session
 			s.Clear()
 			if s.Save() != nil {
-				c.JSON(http.StatusOK, common.WhoAmIResponse{
-					Code: common.UnknownError,
-				})
+				response.Code = common.UnknownError
+				c.JSON(http.StatusOK, response)
 				return
 			}
 			c.SetCookie("camp-session", "", -1, "/", "", false, true)
 			c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
-			c.JSON(http.StatusOK, common.WhoAmIResponse{
-				Code: common.UnknownError,
-			})
+			response.Code = common.UnknownError
+			c.JSON(http.StatusOK, response)
 			return
 		} else {
 			tMember, errno := services.UserService.GetTMember(userId)
@@ -196,17 +185,15 @@ func WhoAmI(c *gin.Context) {
 				// 清除session
 				s.Clear()
 				if s.Save() != nil {
-					c.JSON(http.StatusOK, common.WhoAmIResponse{
-						Code: common.UnknownError,
-					})
+					response.Code = common.UnknownError
+					c.JSON(http.StatusOK, response)
 					return
 				}
 				// userid有问题，清除cookie
 				c.SetCookie("camp-session", cookie, -1, "/", "", false, true)
 				c.SetCookie(common.SessionName, "", -1, "/", "", false, true)
-				c.JSON(http.StatusOK, common.WhoAmIResponse{
-					Code: common.LoginRequired,
-				})
+				response.Code = common.LoginRequired
+				c.JSON(http.StatusOK, response)
 			}
 			return
 		}

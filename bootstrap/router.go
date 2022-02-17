@@ -1,20 +1,12 @@
 package bootstrap
 
 import (
-	"context"
 	"course-system/app/common"
 	"course-system/global"
 	"course-system/routes"
-	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	"log"
-	"net/http"
-	"os"
-	"os/signal"
-	"syscall"
-	"time"
 )
 
 // RegisterRouter 注册路由
@@ -32,32 +24,34 @@ func RegisterRouter() *gin.Engine {
 // RunServer 启动服务器
 func RunServer() {
 	r := RegisterRouter()
+	r.Run(":" + global.App.Config.App.Port)
 
-	server := http.Server{
-		Addr:         ":" + global.App.Config.App.Port,
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 10 * time.Second,
-		IdleTimeout:  120 * time.Second,
-		Handler:      r,
-	}
-
-	go func() {
-		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("server listen err:%s", err)
-		}
-	}()
-
-	quit := make(chan os.Signal, 1)
-	signal.Notify(quit, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
-
-	// 在此阻塞
-	<-quit
-	server.SetKeepAlivesEnabled(false)
-	ctx, channel := context.WithTimeout(context.Background(), 1*time.Second)
-
-	defer channel()
-	if err := server.Shutdown(ctx); err != nil {
-		log.Fatalf("server shutdown error")
-	}
-	fmt.Println("server exiting...")
+	// 没有进行对比测试效果，先使用gin默认的
+	//server := http.Server{
+	//	Addr:         ":" + global.App.Config.App.Port,
+	//	ReadTimeout:  5 * time.Second,
+	//	WriteTimeout: 10 * time.Second,
+	//	IdleTimeout:  120 * time.Second,
+	//	Handler:      r,
+	//}
+	//
+	//go func() {
+	//	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+	//		log.Fatalf("server listen err:%s", err)
+	//	}
+	//}()
+	//
+	//quit := make(chan os.Signal, 1)
+	//signal.Notify(quit, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+	//
+	//// 在此阻塞
+	//<-quit
+	//server.SetKeepAlivesEnabled(false)
+	//ctx, channel := context.WithTimeout(context.Background(), 1*time.Second)
+	//
+	//defer channel()
+	//if err := server.Shutdown(ctx); err != nil {
+	//	log.Fatalf("server shutdown error")
+	//}
+	//fmt.Println("server exiting...")
 }

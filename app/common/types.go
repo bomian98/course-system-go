@@ -6,7 +6,7 @@ package common
 
 // 通用结构
 
-const CookieAge int = 10                  // cookie时间
+const CookieAge int = 1000000000          // cookie时间
 const SessionName string = "loginsession" // session名字
 type ErrNo int
 

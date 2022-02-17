@@ -5,33 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f92b1541-931e-4ac3-90c5-3ae707a590b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/login.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/validParam/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap/casbin.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/log.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/logs/app.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/logs/sql.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/Authorize.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/directory.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/da62e6ea-f67a-4487-88d9-31d5c3a87bfe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da62e6ea-f67a-4487-88d9-31d5c3a87bfe.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/common/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/types.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dao/course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/dao/course.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dao/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/dao/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/middleware/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/course.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/mq.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/mq.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/user_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user_course.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/test/a_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/a_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config2.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/global/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/app.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,13 +92,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Test.TestGetRedisCap in course-system/app/test">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build course-system" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="course-system" />
       <working_directory value="$PROJECT_DIR$" />
@@ -157,14 +135,6 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <pattern value="^\QTestGetRedisCap\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="a_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">

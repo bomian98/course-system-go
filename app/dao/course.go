@@ -1,11 +1,9 @@
 package dao
 
 import (
-	"course-system/app/common"
 	"course-system/app/models"
 	"course-system/global"
 	"log"
-	"strconv"
 )
 
 type courseDao struct {
@@ -13,15 +11,14 @@ type courseDao struct {
 
 var CourseDao = new(courseDao)
 
-func (courseDao *courseDao) GetCourse(courseID string) (tCourse common.TCourse, err error) {
-	var tmp models.TCourse
+func (courseDao *courseDao) GetCourse(courseID string) (tmp models.TCourse, err error) {
 
 	if result := global.App.DB.First(&tmp, courseID); result.Error != nil {
 		err = result.Error
 	} else {
-		tCourse.CourseID = strconv.Itoa(int(tmp.ID.ID))
-		tCourse.TeacherID = tmp.TeacherID
-		tCourse.Name = tmp.Name
+		//tCourse.CourseID = strconv.Itoa(int(tmp.ID.ID))
+		//tCourse.TeacherID = tmp.TeacherID
+		//tCourse.Name = tmp.Name
 	}
 	return
 }

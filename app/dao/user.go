@@ -20,6 +20,11 @@ func (userDao *userDao) GetUserByUsername2(username string) (user *models.User, 
 	return
 }
 
+func (userDao *userDao) GetAllStuList() (users []*models.User) {
+	global.App.DB.Where("user_type = ?", 2).Find(&users)
+	return
+}
+
 func (userDao *userDao) CreateUser(user models.User) (err error) {
 	err = global.App.DB.Create(&user).Error
 	return
