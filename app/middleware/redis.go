@@ -25,7 +25,7 @@ else
 	if tonumber(redis.call('exists',KEYS[2]), 10) == 0 then
 		return 3
 	else 
-		if tonumber(redis.call('get',KEYS[2]), 10) == 0 then
+		if tonumber(redis.call('get',KEYS[2]), 10) <= 0 then
 				return 0
 		else
 			redis.call('decr', KEYS[2])

@@ -3,7 +3,6 @@ package test
 import (
 	"course-system/app/services"
 	"course-system/bootstrap"
-	"course-system/global"
 	"fmt"
 	"testing"
 )
@@ -11,15 +10,15 @@ import (
 // test前先执行
 func TestMain(m *testing.M) {
 	bootstrap.InitializeConfig()
-	bootstrap.InitializeLog()
-	global.App.DB = bootstrap.InitializeDB()
-	defer func() {
-		if global.App.DB != nil {
-			db, _ := global.App.DB.DB()
-			db.Close()
-		}
-	}()
-	global.App.Redis = bootstrap.InitializeRedis()
+	//bootstrap.InitializeLog()
+	//global.App.DB = bootstrap.InitializeDB()
+	//defer func() {
+	//	if global.App.DB != nil {
+	//		db, _ := global.App.DB.DB()
+	//		db.Close()
+	//	}
+	//}()
+	//global.App.Redis = bootstrap.InitializeRedis()
 	m.Run()
 }
 
@@ -78,8 +77,8 @@ func TestGetDBCap(t *testing.T) {
 
 func TestScheduleCourse(t *testing.T) {
 	mapTest := map[string][]string{
-		"c1": {"c1", "c2", "c3"},
-		"c2": {"c2", "c3", "c4"},
+		"t1": {"c1", "c2", "c3"},
+		"t2": {"c2", "c3", "c4"},
 		"t3": {"c3"},
 		"t4": {"c4"},
 		"t5": {"c1", "c5"},

@@ -4,12 +4,14 @@ var MapTeacher = map[string][]string{}
 var MapCourse = map[string][]string{}
 var vis = map[string]bool{} //记录课程是否已被访问过
 var p = map[string]string{} //记录当前课程被哪位老师选中
+var res = map[string]string{}
 
 func initSchedule() {
 	MapTeacher = map[string][]string{}
 	MapCourse = map[string][]string{}
 	vis = map[string]bool{} //记录课程是否已被访问过
 	p = map[string]string{} //记录当前课程被哪位老师选中
+	res = map[string]string{}
 }
 
 func match(teacherID string) bool {
@@ -31,11 +33,15 @@ func KM(mapTeacher map[string][]string) map[string]string {
 	MapTeacher = mapTeacher
 	for teacherID, courseIDs := range MapTeacher {
 		for _, courseID := range courseIDs {
-			MapCourse[teacherID] = append(MapCourse[teacherID], courseID)
+			MapCourse[courseID] = append(MapCourse[courseID], teacherID)
 		}
 	}
 	for teacherID, _ := range MapTeacher {
+		vis = make(map[string]bool)
 		match(teacherID)
+	}
+	for i, j := range p {
+		res[j] = i
 	}
 	return p
 }
