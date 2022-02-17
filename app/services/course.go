@@ -16,6 +16,9 @@ type courseService struct {
 var CourseService = new(courseService)
 
 func (courseService *courseService) CreateCourse(name string, cap int) (courseID string, no common.ErrNo) {
+	if cap < 0 {
+		return "", common.UnknownError
+	}
 	ID, err := dao.CourseDao.IsCourseExistsByName(name) // 判断课程是否存在
 	if err != nil {
 		return "", common.UnknownError

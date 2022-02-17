@@ -16,6 +16,7 @@ func BookCourse(c *gin.Context) {
 		response.Code = services.UserCourseService.BookCourse(request.StudentID, request.CourseID)
 	}
 	c.JSON(http.StatusOK, response)
+	return
 }
 
 func GetStudentCourse(c *gin.Context) {
@@ -28,4 +29,5 @@ func GetStudentCourse(c *gin.Context) {
 		response.Data.CourseList, response.Code = services.UserCourseService.GetUserCourses(request.StudentID)
 	}
 	c.JSON(http.StatusOK, response)
+	return
 }

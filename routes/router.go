@@ -3,7 +3,6 @@ package routes
 import (
 	"course-system/app/controllers"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 // SetApiGroupRoutes 定义 api 分组路由
@@ -22,18 +21,14 @@ func SetApiGroupRoutes(router *gin.RouterGroup) {
 	router.GET("/auth/whoami")
 
 	// 排课
-	router.POST("/course/create")
-	router.GET("/course/get")
-
-	router.POST("/teacher/bind_course")
-	router.POST("/teacher/unbind_course")
-	router.GET("/teacher/get_course")
-	router.POST("/course/schedule")
+	router.POST("/course/create", controllers.CreateCourse)
+	router.GET("/course/get", controllers.GetCourse)
+	router.POST("/teacher/bind_course", controllers.BindCourse)
+	router.POST("/teacher/unbind_course", controllers.UnbindCourse)
+	router.GET("/teacher/get_course", controllers.GetTeacherCourse)
+	router.POST("/course/schedule", controllers.MakeSchedule)
 
 	// 抢课
-	router.GET("/student/book", func(context *gin.Context) {
-		context.JSON(http.StatusOK, "pong")
-	})
 	router.POST("/student/book_course", controllers.BookCourse)
 	router.GET("/student/course", controllers.GetStudentCourse)
 }

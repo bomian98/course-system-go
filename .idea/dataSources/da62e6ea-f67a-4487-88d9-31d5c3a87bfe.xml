@@ -912,140 +912,152 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <collation id="273" parent="1" name="utf8mb4_zh_0900_as_cs">
       <Charset>utf8mb4</Charset>
     </collation>
-    <schema id="274" parent="1" name="coursesystem">
+    <schema id="274" parent="1" name="camp">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="275" parent="1" name="coursesystem">
       <Current>1</Current>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="275" parent="1" name="information_schema">
+    <schema id="276" parent="1" name="information_schema">
       <CollationName>utf8_general_ci</CollationName>
     </schema>
-    <schema id="276" parent="1" name="mysql">
+    <schema id="277" parent="1" name="mysql">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="277" parent="1" name="performance_schema">
+    <schema id="278" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="278" parent="1" name="sys">
+    <schema id="279" parent="1" name="sys">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="279" parent="1" name="wxftest">
+    <schema id="280" parent="1" name="wxftest">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <user id="280" parent="1" name="mysql.infoschema">
+    <user id="281" parent="1" name="mysql.infoschema">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="281" parent="1" name="mysql.session">
+    <user id="282" parent="1" name="mysql.session">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="282" parent="1" name="mysql.sys">
+    <user id="283" parent="1" name="mysql.sys">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="283" parent="1" name="root"/>
-    <table id="284" parent="274" name="t_courses">
+    <user id="284" parent="1" name="root"/>
+    <table id="285" parent="275" name="t_courses">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="285" parent="274" name="user_courses">
+    <table id="286" parent="275" name="user_courses">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="286" parent="274" name="users">
+    <table id="287" parent="275" name="users">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="287" parent="284" name="id">
+    <column id="288" parent="285" name="id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="288" parent="284" name="name">
+    <column id="289" parent="285" name="name">
       <Comment>课程名称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="289" parent="284" name="cap">
+    <column id="290" parent="285" name="cap">
       <Comment>课程容量</Comment>
       <DataType>bigint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="290" parent="284" name="teacher_id">
+    <column id="291" parent="285" name="teacher_id">
       <Comment>教师</Comment>
-      <DataType>bigint|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <Position>4</Position>
     </column>
-    <key id="291" parent="284" name="PRIMARY">
+    <index id="292" parent="285" name="name">
+      <ColNames>name</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="293" parent="285" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="292" parent="285" name="id">
+    <key id="294" parent="285" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="295" parent="286" name="id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="293" parent="285" name="user_id">
+    <column id="296" parent="286" name="user_id">
       <Comment>用户ID</Comment>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="294" parent="285" name="course_id">
+    <column id="297" parent="286" name="course_id">
       <Comment>课程ID</Comment>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <key id="295" parent="285" name="PRIMARY">
+    <key id="298" parent="286" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="296" parent="286" name="id">
+    <column id="299" parent="287" name="id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="297" parent="286" name="nickname">
+    <column id="300" parent="287" name="nickname">
       <Comment>用户昵称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="298" parent="286" name="username">
+    <column id="301" parent="287" name="username">
       <Comment>用户名称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="299" parent="286" name="password">
+    <column id="302" parent="287" name="password">
       <Comment>用户密码</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="300" parent="286" name="user_type">
+    <column id="303" parent="287" name="user_type">
       <DataType>tinyint|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="301" parent="286" name="deleted_at">
+    <column id="304" parent="287" name="deleted_at">
       <DataType>datetime|0s</DataType>
       <Position>6</Position>
     </column>
-    <index id="302" parent="286" name="idx_users_deleted_at">
+    <index id="305" parent="287" name="idx_users_deleted_at">
       <ColNames>deleted_at</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="303" parent="286" name="PRIMARY">
+    <key id="306" parent="287" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>

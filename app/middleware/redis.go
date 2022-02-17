@@ -14,8 +14,6 @@ var RedisOps = redisOps{
 	BookCourseRedisScript: redis.NewScript(bookCourseLuaScript)}
 var ctx = context.Background()
 
-var redisClient = global.App.Redis
-
 /**
 1. 判断数据是否已经选上了课程，如果抢上了课程，直接返回2
 2. 如果数据没有选上课程，则查看课程容量，如果容量不足，则返回0
@@ -40,41 +38,41 @@ end
 `
 
 func (redisOps *redisOps) BookCourse(keys []string, args ...interface{}) *redis.Cmd {
-	return RedisOps.BookCourseRedisScript.Run(ctx, redisClient, keys, args)
+	return RedisOps.BookCourseRedisScript.Run(ctx, global.App.Redis, keys, args)
 }
 
 func (redisOps *redisOps) IsStuExist(stuID string) bool {
-	return redisClient.SIsMember(ctx, "stu_list", stuID).Val()
+	return global.App.Redis.SIsMember(ctx, "stu_list", stuID).Val()
 }
 
 func (redisOps *redisOps) IsCourseExist(courseID string) bool {
-	_, err := redisClient.Get(ctx, "course_cap_"+courseID).Int()
+	_, err := global.App.Redis.Get(ctx, "course_cap_"+courseID).Int()
 	return err != redis.Nil
 }
 
 func (redisOps *redisOps) AddCourse(courseID, name, teacherID string, cap int) {
-	redisClient.SetNX(ctx, "course_cap_"+courseID, cap, 0)
+	global.App.Redis.Set(ctx, "course_cap_"+courseID, cap, 0)
 	redisOps.AddCourseInfo(courseID, name, teacherID)
 }
 
 func (redisOps *redisOps) GetStuCourse(stuId string) []string {
-	result, _ := redisClient.SMembers(ctx, "stu_course_"+stuId).Result()
+	result, _ := global.App.Redis.SMembers(ctx, "stu_course_"+stuId).Result()
 	return result
 }
 
 func (redisOps *redisOps) GetCourseInfo(courseId string) []interface{} {
-	result, _ := redisClient.HMGet(ctx, "course_info_"+courseId, "CourseID", "Name", "TeacherID").Result()
+	result, _ := global.App.Redis.HMGet(ctx, "course_info_"+courseId, "CourseID", "Name", "TeacherID").Result()
 	return result
 }
 
 func (redisOps *redisOps) DelCourseInfo(courseID string) {
-	redisClient.Del(ctx, "course_info_"+courseID)
+	global.App.Redis.Del(ctx, "course_info_"+courseID)
 }
 
 func (redisOps *redisOps) AddStuCourse(stuID string, courseID string) {
-	redisClient.SAdd(ctx, "stu_course_"+stuID, courseID)
+	global.App.Redis.SAdd(ctx, "stu_course_"+stuID, courseID)
 }
 
 func (redisOps *redisOps) AddCourseInfo(courseID, name, teacherID string) {
-	redisClient.HMSet(ctx, "course_info_"+courseID, "CourseID", courseID, "Name", name, "TeacherID", teacherID)
+	global.App.Redis.HMSet(ctx, "course_info_"+courseID, "CourseID", courseID, "Name", name, "TeacherID", teacherID)
 }
