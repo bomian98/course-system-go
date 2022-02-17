@@ -72,10 +72,16 @@ func GetUser(c *gin.Context) {
 		c.JSON(http.StatusOK, res)
 	} else {
 		code, user := services.GetServices(request)
-		member := common.TMember{UserID: strconv.FormatInt(user.ID.ID, 10), Nickname: user.Nickname, Username: user.Username, UserType: user.UserType}
-		res = common.GetMemberResponse{Code: code, Data: member}
-		fmt.Println("get success!")
-		c.JSON(http.StatusOK, res)
+		res.Code = code
+		if code != common.OK {
+			c.JSON(http.StatusOK, res)
+		} else {
+			member := common.TMember{UserID: strconv.FormatInt(user.ID.ID, 10), Nickname: user.Nickname, Username: user.Username, UserType: user.UserType}
+			res.Data = member
+			fmt.Println("get success!")
+			c.JSON(http.StatusOK, res)
+		}
+
 	}
 }
 

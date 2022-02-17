@@ -11,6 +11,11 @@ type userDao struct {
 var UserDao = new(userDao)
 
 func (userDao *userDao) GetUserByUsername(username string) (user *models.User, err error) {
+	err = global.App.DB.Where("username = ?", username).Find(&user).Error
+	return
+}
+
+func (userDao *userDao) GetUserByUsername2(username string) (user *models.User, err error) {
 	err = global.App.DB.Unscoped().Where("username = ?", username).Find(&user).Error
 	return
 }
