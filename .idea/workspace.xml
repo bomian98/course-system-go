@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f92b1541-931e-4ac3-90c5-3ae707a590b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/course.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/middleware/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/redis.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/common/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/types.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/book_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/book_course.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/course.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/user_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user_course.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,16 +67,16 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Go\course-system" />
       <recent name="D:\Go\course-system\app" />
       <recent name="D:\Go\course-system\app\services" />
       <recent name="D:\Go\course-system\app\dao" />
       <recent name="D:\Go\course-system\app\controllers" />
-      <recent name="D:\Go\course-system\bootstrap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Go\course-system\routes" />
@@ -83,6 +87,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Test.TestGetRedisCap in course-system/app/test">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build course-system" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="course-system" />
       <working_directory value="$PROJECT_DIR$" />
@@ -126,6 +137,14 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <pattern value="^\QTestGetRedisCap\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="a_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">

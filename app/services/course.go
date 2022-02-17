@@ -37,10 +37,13 @@ func (courseService *courseService) CreateCourse(name string, cap int) (courseID
 }
 
 func (courseService *courseService) GetCourse(courseID string) (common.TCourse, common.ErrNo) {
-	if !middleware.RedisOps.IsCourseExist(courseID) {
-		return common.TCourse{}, common.CourseNotExisted
-	}
+	//if !middleware.RedisOps.IsCourseExist(courseID) {
+	//	return common.TCourse{}, common.CourseNotExisted
+	//}
 	tCourse := GetCourseInfo(courseID)
+	if tCourse.CourseID == "" {
+		return tCourse, common.CourseNotExisted
+	}
 	return tCourse, common.OK
 	//if tCourse, err := dao.CourseDao.GetCourse(courseID); err != nil {
 	//	return tCourse, common.UnknownError

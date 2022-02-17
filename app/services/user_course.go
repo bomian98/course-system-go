@@ -5,6 +5,7 @@ import (
 	"course-system/app/dao"
 	"course-system/app/middleware"
 	"course-system/app/models"
+	"fmt"
 	"github.com/go-redis/redis/v8"
 	"strconv"
 )
@@ -63,6 +64,7 @@ func (userCourseService *userCourseService) GetUserCourses(stuId string) ([]comm
 	if !StudentExist(stuId) {
 		return courseList, common.StudentHasNoCourse
 	}
+	fmt.Println(StudentExist(stuId))
 	var courseIDList []string
 	courseIDList = middleware.RedisOps.GetStuCourse(stuId)
 	if len(courseIDList) == 0 { // 缓存中没有数据，从数据库访问
@@ -102,7 +104,10 @@ func GetCourseInfo(courseID string) common.TCourse {
 	info := middleware.RedisOps.GetCourseInfo(courseID) //从缓存中读取课程信息
 	tCourse.CourseID, ok = info[0].(string)             // 尝试将其转换为string类型
 	if !ok {                                            //转换失败，即缓存中不存在该信息
-		course, _ := dao.CourseDao.GetCourse(courseID) // 从数据库中读取
+		course, err := dao.CourseDao.GetCourse(courseID) // 从数据库中读取
+		if err != nil {
+			return common.TCourse{}
+		}
 		tCourse.CourseID = courseID
 		tCourse.Name = course.Name
 		tCourse.TeacherID = course.TeacherID
@@ -133,6 +138,8 @@ func StudentExist(stuId string) bool {
 			}
 		}
 		middleware.RedisOps.SetStuList(stuIDs) // 添加到缓存中
+	} else {
+		isExist = true
 	}
 	return isExist
 }

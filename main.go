@@ -13,6 +13,8 @@ func main() {
 
 	bootstrap.InitializeLog()
 
+	global.App.E = bootstrap.InitCasbin()
+
 	// 初始化数据库
 	global.App.DB = bootstrap.InitializeDB()
 

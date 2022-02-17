@@ -10,7 +10,7 @@ import (
 func BookCourse(c *gin.Context) {
 	var request common.BookCourseRequest // 声明待绑定的输入数据
 	var response common.BookCourseResponse
-	if err := c.ShouldBindJSON(&request); err != nil { // 入参绑定错误，返回错误
+	if err := c.ShouldBind(&request); err != nil { // 入参绑定错误，返回错误
 		response.Code = common.ParamInvalid
 	} else {
 		response.Code = services.UserCourseService.BookCourse(request.StudentID, request.CourseID)
@@ -22,7 +22,7 @@ func BookCourse(c *gin.Context) {
 func GetStudentCourse(c *gin.Context) {
 	var request common.GetStudentCourseRequest
 	var response common.GetStudentCourseResponse
-	if err := c.ShouldBindJSON(&request); err != nil { // 入参绑定错误，返回错误
+	if err := c.ShouldBind(&request); err != nil { // 入参绑定错误，返回错误
 		response.Code = common.ParamInvalid
 		response.Data.CourseList = make([]common.TCourse, 0)
 	} else {

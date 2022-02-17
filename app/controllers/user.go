@@ -17,8 +17,7 @@ func CreateUser(c *gin.Context) {
 		//绑定错误
 		res.Code = common.UnknownError
 		c.JSON(http.StatusOK, res)
-	}
-	if validParam.CreateUserValidParam(json) == false {
+	} else if validParam.CreateUserValidParam(json) == false {
 		//参数错误
 		res.Code = common.ParamInvalid
 		c.JSON(http.StatusOK, res)
@@ -37,8 +36,7 @@ func UpdateUser(c *gin.Context) {
 		//绑定错误
 		res.Code = common.UnknownError
 		c.JSON(http.StatusOK, res)
-	}
-	if validParam.UpdateUserValidParam(json) == false {
+	} else if validParam.UpdateUserValidParam(json) == false {
 		//参数错误
 		res.Code = common.ParamInvalid
 		c.JSON(http.StatusOK, res)
