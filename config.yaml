@@ -1,8 +1,8 @@
 app: # 应用基本配置
   env: local # 环境名称
-  port: 8080 # 服务监听端口号
+  port: 80 # 服务监听端口号
   app_name: gin-app # 应用名称
-  app_url: http://localhost # 应用域名
+  app_url: http://180.184.74.25 # 应用域名
 
 log:
   level: info # 日志等级
@@ -21,7 +21,7 @@ database:
   port: 3306 # 端口号
   database: coursesystem # 数据库名称
   username: root # 用户名
-  password: password # 密码 服务器是 bytedancecamp
+  password: bytedancecamp # 密码 服务器是 bytedancecamp
   charset: utf8mb4 # 编码格式
   max_idle_conns: 10 # 空闲连接池中连接的最大数量
   max_open_conns: 100 # 打开数据库连接的最大数量
@@ -33,4 +33,4 @@ redis:
   host: '127.0.0.1'
   port: 6379
   db: 0
-  password: #服务器是 redispwd
+  password:  #服务器是 redispwd

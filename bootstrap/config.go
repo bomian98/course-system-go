@@ -9,7 +9,7 @@ import (
 
 func InitializeConfig() *viper.Viper {
 	// 设置配置文件路径
-	config := "config2.yaml"
+	config := "config.yaml"
 
 	// 初始化 viper
 	v := viper.New()

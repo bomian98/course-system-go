@@ -9,3 +9,6 @@
 [log]2022/02/15 10:57:27 mq.go:23: 0xc0006024f8
 [log]2022/02/15 10:57:27 mq.go:19: 11
 [log]2022/02/17 02:24:41 main.go:33: 1
+[log]2022/02/17 09:48:38 main.go:33: 1
+[log]2022/02/17 09:48:38 router.go:46: server listen err:listen tcp :80: bind: address already in use
+[log]2022/02/17 09:49:33 main.go:33: 1

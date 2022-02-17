@@ -1,12 +1,10 @@
 package test
 
 import (
-	"context"
-	"course-system/app/common"
+	"course-system/app/services"
 	"course-system/bootstrap"
 	"course-system/global"
 	"fmt"
-	"github.com/go-redis/redis/v8"
 	"testing"
 )
 
@@ -26,32 +24,32 @@ func TestMain(m *testing.M) {
 }
 
 func TestGetRedisCap(t *testing.T) {
-	ctx := context.Background()
-	var courseID string
-	var result []interface{}
-	var err error
-	courseID = "11"
-	result, err = global.App.Redis.HMGet(ctx, "course_info_"+courseID, "CourseID", "Name", "TeacherID").Result()
-	fmt.Println(result)
-	fmt.Println(err)
-	if err == redis.Nil {
-		fmt.Println("11")
-	}
-	courseID = "12"
-	result, err = global.App.Redis.HMGet(ctx, "course_info_"+courseID, "CourseID", "Name", "TeacherID").Result()
-	fmt.Println(result)
-	fmt.Println(err)
-	if err == redis.Nil {
-		fmt.Println("11")
-	}
-	//fmt.Println(result[1].(string))
-	_, ok := result[2].(string)
-	if ok {
-		fmt.Println(11)
-	}
-	tt := make([]common.TCourse, 0)
-	tt = append(tt, common.TCourse{CourseID: "1"})
-	fmt.Println(tt)
+	//ctx := context.Background()
+	//var courseID string
+	//var result []interface{}
+	//var err error
+	//courseID = "11"
+	//result, err = global.App.Redis.HMGet(ctx, "course_info_"+courseID, "CourseID", "Name", "TeacherID").Result()
+	//fmt.Println(result)
+	//fmt.Println(err)
+	//if err == redis.Nil {
+	//	fmt.Println("11")
+	//}
+	//courseID = "12"
+	//result, err = global.App.Redis.HMGet(ctx, "course_info_"+courseID, "CourseID", "Name", "TeacherID").Result()
+	//fmt.Println(result)
+	//fmt.Println(err)
+	//if err == redis.Nil {
+	//	fmt.Println("11")
+	//}
+	////fmt.Println(result[1].(string))
+	//_, ok := result[2].(string)
+	//if ok {
+	//	fmt.Println(11)
+	//}
+	//tt := make([]common.TCourse, 0)
+	//tt = append(tt, common.TCourse{CourseID: "1"})
+	//fmt.Println(tt)
 	//fmt.Println(reflect.Type(err))
 	//_, err := global.App.Redis.Get(context.Background(), "course_cap_1111").Int()
 	//fmt.Println(err != redis.Nil)
@@ -76,4 +74,16 @@ func TestGetDBCap(t *testing.T) {
 	//	cap[i] = int(row)
 	//}
 	//fmt.Println(cap)
+}
+
+func TestScheduleCourse(t *testing.T) {
+	mapTest := map[string][]string{
+		"c1": {"c1", "c2", "c3"},
+		"c2": {"c2", "c3", "c4"},
+		"t3": {"c3"},
+		"t4": {"c4"},
+		"t5": {"c1", "c5"},
+	}
+	result := services.KM(mapTest)
+	fmt.Println(result)
 }

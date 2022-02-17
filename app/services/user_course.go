@@ -13,19 +13,7 @@ type userCourseService struct {
 
 var UserCourseService = new(userCourseService)
 
-// IsStudentExisted 这个应该属于成员/登录的服务
-// 根据ID获得某个成员
-func (userCourseService *userCourseService) IsStudentExisted(stuId int64) (result bool) {
-	if _, err := dao.UserDao.GetUser(stuId); err != nil {
-		return false
-	} else {
-		return true
-	}
-}
-
 // BookCourse 根据stu和course进行抢课服务
-// 判断是不是学生，判断课程是否存在 --- 插入数据时，如果是学生，则将其加入布隆过滤器中，插入课程同理
-// 之后，若这个
 func (userCourseService *userCourseService) BookCourse(stuId string, courseId string) common.ErrNo {
 	// 从学生列表中判断学生是否存在
 	if !middleware.RedisOps.IsStuExist(stuId) {

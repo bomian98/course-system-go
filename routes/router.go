@@ -2,6 +2,8 @@ package routes
 
 import (
 	"course-system/app/controllers"
+	"course-system/global"
+	"course-system/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,16 +11,16 @@ import (
 func SetApiGroupRoutes(router *gin.RouterGroup) {
 
 	// 成员管理
-	router.POST("/member/create")
-	router.GET("/member")
-	router.GET("/member/list")
-	router.POST("/member/update")
-	router.POST("/member/delete")
+	router.POST("/member/create", utils.Authorize(global.App.E), controllers.CreateUser)
+	router.GET("/member", controllers.GetUser)
+	router.GET("/member/list", controllers.GetsUser)
+	router.POST("/member/update", controllers.UpdateUser)
+	router.POST("/member/delete", controllers.DeleteUser)
 
 	// 登录
-	router.POST("/auth/login")
-	router.POST("/auth/logout")
-	router.GET("/auth/whoami")
+	router.POST("/auth/login", controllers.Login)
+	router.POST("/auth/logout", controllers.Logout)
+	router.GET("/auth/whoami", controllers.WhoAmI)
 
 	// 排课
 	router.POST("/course/create", controllers.CreateCourse)
