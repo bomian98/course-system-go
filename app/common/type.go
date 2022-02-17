@@ -8,8 +8,8 @@ package common
 
 // cookie时间
 
-const CookieAge int = 10
-
+const CookieAge int = 10                  // cookie时间
+const SessionName string = "loginsession" // session名字
 type ErrNo int
 
 const (

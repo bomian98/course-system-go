@@ -11,9 +11,9 @@ import (
 func SetApiGroupRoutes(router *gin.RouterGroup) {
 
 	// 成员管理
-	router.POST("/member/create", controllers.CreateUser)
+	router.POST("/member/create", utils.Authorize(global.App.E), controllers.CreateUser)
 	router.GET("/member", controllers.GetUser)
-	router.GET("/member/list", utils.Authorize(global.App.E), controllers.GetsUser)
+	router.GET("/member/list", controllers.GetsUser)
 	router.POST("/member/update", controllers.UpdateUser)
 	router.POST("/member/delete", controllers.DeleteUser)
 

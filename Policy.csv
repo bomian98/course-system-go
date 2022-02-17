@@ -1,1 +1,1 @@
-p,1,/api/v1/member/list,GET
+p,1,/api/v1/member/create,POST
