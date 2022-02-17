@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f92b1541-931e-4ac3-90c5-3ae707a590b2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/da62e6ea-f67a-4487-88d9-31d5c3a87bfe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/da62e6ea-f67a-4487-88d9-31d5c3a87bfe.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/schedule_course.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/book_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/book_course.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/course.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/middleware/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/redis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/course.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/course.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
