@@ -57,6 +57,7 @@ func (userSevice *userService) UserMD5(userID string) string {
 
 func CreateUseServices(request common.CreateMemberRequest) (common.ErrNo, string) {
 	if middleware.RedisOps.IsExistUsername(request.Username + "s") {
+
 		return common.UserHasExisted, ""
 	}
 	log.Println(request.Username)
@@ -104,24 +105,18 @@ func DeleteServices(request common.DeleteMemberRequest) common.ErrNo {
 func GetServices(request common.GetMemberRequest) (common.ErrNo, *models.User) {
 	id, _ := strconv.ParseInt(request.UserID, 10, 64)
 	if code := userStatus(request.UserID); code != common.OK {
-		log.Println("服了")
 		var temp *models.User
 		return code, temp
 	}
 	temps := middleware.RedisOps.GetMemberInfo(request.UserID)
-	log.Println(temps)
-	if temps[0] != nil {
-		var user *models.User
-		user.ID.ID, _ = strconv.ParseInt(temps[0].(string), 10, 64)
-		user.Nickname = temps[1].(string)
-		user.Username = temps[2].(string)
-		user.UserType = temps[3].(common.UserType)
-		return common.OK, user
+	if temps.Username != "" {
+		return common.OK, temps
 	}
 	user, err := dao.UserDao.GetUserByID(id)
 	if err != nil {
 		return common.UnknownError, user
 	}
+	middleware.RedisOps.AddMemberInfo(request.UserID, user.Nickname, user.Username, strconv.Itoa(int(user.UserType)))
 	return common.OK, user
 }
 

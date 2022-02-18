@@ -3,9 +3,11 @@ package middleware
 import (
 	"context"
 	"course-system/app/common"
+	"course-system/app/models"
 	"course-system/global"
 	"github.com/go-redis/redis/v8"
 	"log"
+	"strconv"
 )
 
 type redisOps struct {
@@ -125,7 +127,7 @@ func (redisOps *redisOps) AddUserTypeInfo(UserType string, UserID string) {
 	global.App.Redis.HMSet(ctx, "UserTypeInfo"+UserID, "UserID", UserID, "UserType", UserType)
 }
 
-func (redisOps *redisOps) AddMemberInfo(UserID, Nickname, Username string, UserType common.UserType) {
+func (redisOps *redisOps) AddMemberInfo(UserID string, Nickname string, Username string, UserType string) {
 	global.App.Redis.HMSet(ctx, "MemberInfo"+UserID, "UserID", UserID, "Nickname", Nickname, "Username", Username, "UserType", UserType)
 }
 
@@ -157,9 +159,23 @@ func (redisOps *redisOps) GetUserTypeInfo(UserID string) string {
 	return result
 }
 
-func (redisOps *redisOps) GetMemberInfo(UserID string) []interface{} {
-	result, _ := global.App.Redis.HMGet(ctx, "MemberInfo"+UserID, "UserID", "Nickname", "Username", "UserType").Result()
-	return result
+func (redisOps *redisOps) GetMemberInfo(UserID string) *models.User {
+	user := models.User{}
+	param1, _ := global.App.Redis.HGet(ctx, "MemberInfo"+UserID, "UserID").Result()
+	param2, _ := global.App.Redis.HGet(ctx, "MemberInfo"+UserID, "Nickname").Result()
+	param3, _ := global.App.Redis.HGet(ctx, "MemberInfo"+UserID, "Username").Result()
+	param4, _ := global.App.Redis.HGet(ctx, "MemberInfo"+UserID, "UserType").Result()
+	log.Println(param1, param2, param3, param4)
+	log.Println(user)
+	if param1 == "" {
+		return &user
+	}
+	user.ID.ID, _ = strconv.ParseInt(param1, 10, 64)
+	user.Nickname = param2
+	user.Username = param3
+	temp, _ := strconv.Atoi(param4)
+	user.UserType = common.UserType(temp)
+	return &user
 }
 
 func (redisOps *redisOps) IsExistUserID(UserID string) bool {
