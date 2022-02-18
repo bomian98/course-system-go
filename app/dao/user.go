@@ -10,6 +10,11 @@ type userDao struct {
 
 var UserDao = new(userDao)
 
+func (userDao *userDao) GetAllStuList() (users []*models.User) {
+	global.App.DB.Where("user_type = ?", 2).Find(&users)
+	return
+}
+
 func (userDao *userDao) GetUserByUsername(username string) (user *models.User, err error) {
 	err = global.App.DB.Where("username = ?", username).Find(&user).Error
 	return
@@ -20,12 +25,7 @@ func (userDao *userDao) GetUserByUsername2(username string) (user *models.User, 
 	return
 }
 
-func (userDao *userDao) GetAllStuList() (users []*models.User) {
-	global.App.DB.Where("user_type = ?", 2).Find(&users)
-	return
-}
-
-func (userDao *userDao) CreateUser(user models.User) (err error) {
+func (userDao *userDao) CreateUser(user *models.User) (err error) {
 	err = global.App.DB.Create(&user).Error
 	return
 }

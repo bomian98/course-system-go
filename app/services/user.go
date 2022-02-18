@@ -3,9 +3,11 @@ package services
 import (
 	"course-system/app/common"
 	"course-system/app/dao"
+	"course-system/app/middleware"
 	"course-system/app/models"
 	"crypto/md5"
 	"encoding/hex"
+	"log"
 	"strconv"
 )
 
@@ -54,24 +56,29 @@ func (userSevice *userService) UserMD5(userID string) string {
 //---------------------------------------------------------------------------------------------------------------
 
 func CreateUseServices(request common.CreateMemberRequest) (common.ErrNo, string) {
-	temp, err := dao.UserDao.GetUserByUsername(request.Username)
-	if err != nil {
-		return common.UnknownError, ""
-	}
-	if temp.Username != "" {
+	if middleware.RedisOps.IsExistUsername(request.Username + "s") {
 		return common.UserHasExisted, ""
 	}
+	log.Println(request.Username)
+	//log.Println(middleware.RedisOps.IsExistUsername(request.Username))
 	user := models.User{Username: request.Username, Nickname: request.Nickname, Password: request.Password, UserType: request.UserType}
-	if err := dao.UserDao.CreateUser(user); err != nil {
+	if err := dao.UserDao.CreateUser(&user); err != nil {
 		return common.UnknownError, ""
 	}
-	return common.OK, strconv.FormatInt(user.ID.ID, 10)
+	log.Println(user.ID)
+	ID := strconv.FormatInt(user.ID.ID, 10)
+	userType := strconv.Itoa(int(user.UserType))
+	log.Println(ID, userType)
+	middleware.RedisOps.AddUsernameInfo(request.Username + "s")
+	middleware.RedisOps.AddUserIDInfo(ID)
+	middleware.RedisOps.AddUserTypeInfo(userType, ID)
+	return common.OK, ID
 }
 
 func UpdateServices(request common.UpdateMemberRequest) common.ErrNo {
 	user := models.User{Nickname: request.Nickname}
 	id, _ := strconv.ParseInt(request.UserID, 10, 64)
-	if code := userStatus(id); code != common.OK {
+	if code := userStatus(request.UserID); code != common.OK {
 		return code
 	}
 	if err := dao.UserDao.UpdateUser(user, id); err != nil {
@@ -82,20 +89,34 @@ func UpdateServices(request common.UpdateMemberRequest) common.ErrNo {
 
 func DeleteServices(request common.DeleteMemberRequest) common.ErrNo {
 	id, _ := strconv.ParseInt(request.UserID, 10, 64)
-	if code := userStatus(id); code != common.OK {
+	if code := userStatus(request.UserID); code != common.OK {
 		return code
 	}
 	if err := dao.UserDao.DeleteUser(id); err != nil {
 		return common.UnknownError
 	}
+	middleware.RedisOps.AddUserDelInfo(request.UserID)
+	middleware.RedisOps.DelUserTypeInfo(request.UserID)
+	middleware.RedisOps.DelUserIDInfo(request.UserID)
 	return common.OK
 }
 
 func GetServices(request common.GetMemberRequest) (common.ErrNo, *models.User) {
 	id, _ := strconv.ParseInt(request.UserID, 10, 64)
-	if code := userStatus(id); code != common.OK {
+	if code := userStatus(request.UserID); code != common.OK {
+		log.Println("服了")
 		var temp *models.User
 		return code, temp
+	}
+	temps := middleware.RedisOps.GetMemberInfo(request.UserID)
+	log.Println(temps)
+	if temps[0] != nil {
+		var user *models.User
+		user.ID.ID, _ = strconv.ParseInt(temps[0].(string), 10, 64)
+		user.Nickname = temps[1].(string)
+		user.Username = temps[2].(string)
+		user.UserType = temps[3].(common.UserType)
+		return common.OK, user
 	}
 	user, err := dao.UserDao.GetUserByID(id)
 	if err != nil {
@@ -113,29 +134,20 @@ func GetsServices(request common.GetMemberListRequest) (common.ErrNo, []*models.
 	return common.OK, users
 }
 
-func userStatus(ID int64) common.ErrNo { //用户是否不存在,是否已删除
-	user, err := dao.UserDao.GetUserByID2(ID)
-	if err != nil {
-		return common.UnknownError
-	}
-	if user.Username == "" {
-		return common.UserNotExisted
-	}
-	if user.DeletedAt.Valid == true {
+func userStatus(ID string) common.ErrNo { //用户是否不存在,是否已删除
+	if middleware.RedisOps.IsExistDel(ID) {
 		return common.UserHasDeleted
+
+	}
+	if !middleware.RedisOps.IsExistUserID(ID) {
+		return common.UserNotExisted
 	}
 	return common.OK
 }
 
-func GetUserType(ID int64) (common.ErrNo, common.UserType) {
-	if code := userStatus(ID); code != common.OK {
-		return code, 0
-	}
-	user, err := dao.UserDao.GetUserByID(ID)
-	if err != nil {
-		return common.UnknownError, 0
-	} else {
-		return common.OK, user.UserType
-	}
+func GetUserType(ID string) (common.ErrNo, string) {
+	userType := middleware.RedisOps.GetUserTypeInfo(ID)
+	log.Println("usertype", userType)
+	return common.OK, userType
 
 }

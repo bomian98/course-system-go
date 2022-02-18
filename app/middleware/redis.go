@@ -2,8 +2,10 @@ package middleware
 
 import (
 	"context"
+	"course-system/app/common"
 	"course-system/global"
 	"github.com/go-redis/redis/v8"
+	"log"
 )
 
 type redisOps struct {
@@ -115,4 +117,65 @@ func (redisOps *redisOps) GetStuCourse(stuId string) []string {
 
 func (redisOps *redisOps) AddStuCourse(stuID string, courseID string) {
 	global.App.Redis.SAdd(ctx, "stu_course_"+stuID, courseID)
+}
+
+//-------------------------------------------------------------------------
+
+func (redisOps *redisOps) AddUserTypeInfo(UserType string, UserID string) {
+	global.App.Redis.HMSet(ctx, "UserTypeInfo"+UserID, "UserID", UserID, "UserType", UserType)
+}
+
+func (redisOps *redisOps) AddMemberInfo(UserID, Nickname, Username string, UserType common.UserType) {
+	global.App.Redis.HMSet(ctx, "MemberInfo"+UserID, "UserID", UserID, "Nickname", Nickname, "Username", Username, "UserType", UserType)
+}
+
+func (redisOps *redisOps) AddUserIDInfo(UserID string) {
+	global.App.Redis.Set(ctx, "UserIDInfo"+UserID, 0, 0)
+	//global.App.Redis.SAdd(ctx, "UserIDInfo"+UserID)
+}
+
+func (redisOps *redisOps) AddUsernameInfo(Username string) {
+	global.App.Redis.Set(ctx, Username, 1, 0)
+	//global.App.Redis.SAdd(ctx, Username)
+}
+
+func (redisOps *redisOps) AddUserDelInfo(UserID string) {
+	global.App.Redis.Set(ctx, "UserDelInfo"+UserID, 0, 0)
+	//global.App.Redis.SAdd(ctx, "UserDelInfo"+UserID)
+}
+
+func (redisOps *redisOps) DelUserIDInfo(UserID string) {
+	global.App.Redis.Del(ctx, "UserIDInfo"+UserID)
+}
+
+func (redisOps *redisOps) DelUserTypeInfo(UserID string) {
+	global.App.Redis.Del(ctx, "UserTypeInfo"+UserID)
+}
+
+func (redisOps *redisOps) GetUserTypeInfo(UserID string) string {
+	result, _ := global.App.Redis.HGet(ctx, "UserTypeInfo"+UserID, "UserType").Result()
+	return result
+}
+
+func (redisOps *redisOps) GetMemberInfo(UserID string) []interface{} {
+	result, _ := global.App.Redis.HMGet(ctx, "MemberInfo"+UserID, "UserID", "Nickname", "Username", "UserType").Result()
+	return result
+}
+
+func (redisOps *redisOps) IsExistUserID(UserID string) bool {
+	_, err := global.App.Redis.Get(ctx, "UserIDInfo"+UserID).Int()
+	log.Println("*", err)
+	return err != redis.Nil
+}
+
+func (redisOps *redisOps) IsExistUsername(Username string) bool {
+	_, err := global.App.Redis.Get(ctx, Username).Int()
+	log.Println("////", err)
+	return err != redis.Nil
+}
+
+func (redisOps *redisOps) IsExistDel(UserID string) bool {
+	_, err := global.App.Redis.Get(ctx, "UserDelInfo"+UserID).Int()
+	log.Println("#", err)
+	return err != redis.Nil
 }

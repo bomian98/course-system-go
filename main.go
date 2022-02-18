@@ -1,6 +1,8 @@
 package main
 
 import (
+	"course-system/app/common"
+	"course-system/app/services"
 	"course-system/bootstrap"
 	"course-system/global"
 	"log"
@@ -13,8 +15,6 @@ func main() {
 
 	bootstrap.InitializeLog()
 
-	global.App.E = bootstrap.InitCasbin()
-
 	// 初始化数据库
 	global.App.DB = bootstrap.InitializeDB()
 
@@ -26,6 +26,8 @@ func main() {
 		}
 	}()
 
+	//初始化casbin
+	global.App.E = bootstrap.InitCasbin()
 	// 初始化Redis
 	global.App.Redis = bootstrap.InitializeRedis()
 
@@ -33,6 +35,13 @@ func main() {
 	bootstrap.ConsumerOpen()
 
 	log.Println("1")
+	//初始化内置创建者
+	var judge common.CreateMemberRequest
+	judge = common.CreateMemberRequest{Nickname: "JudgeAdmin",
+		Username: "JudgeAdmin",
+		Password: "JudgePassword2022",
+		UserType: 1}
+	services.CreateUseServices(judge)
 	// 启动服务器
 	bootstrap.RunServer()
 

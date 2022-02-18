@@ -4,8 +4,8 @@ import (
 	"course-system/app/common"
 	"course-system/app/services"
 	"course-system/app/validParam"
-	"fmt"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -24,7 +24,7 @@ func CreateUser(c *gin.Context) {
 	} else {
 		code, userID := services.CreateUseServices(json)
 		res = common.CreateMemberResponse{Code: code, Data: struct{ UserID string }{userID}}
-		fmt.Println("create success!")
+		log.Println("create success!")
 		c.JSON(http.StatusOK, res)
 	}
 }
@@ -42,7 +42,7 @@ func UpdateUser(c *gin.Context) {
 		c.JSON(http.StatusOK, res)
 	} else {
 		res.Code = services.UpdateServices(json)
-		fmt.Println("update success!")
+		log.Println("update success!")
 		c.JSON(http.StatusOK, res)
 	}
 }
@@ -56,7 +56,7 @@ func DeleteUser(c *gin.Context) {
 		c.JSON(http.StatusOK, res)
 	} else {
 		res.Code = services.DeleteServices(json)
-		fmt.Println("delete success!")
+		log.Println("delete success!")
 		c.JSON(http.StatusOK, res)
 	}
 }
@@ -76,7 +76,7 @@ func GetUser(c *gin.Context) {
 		} else {
 			member := common.TMember{UserID: strconv.FormatInt(user.ID.ID, 10), Nickname: user.Nickname, Username: user.Username, UserType: user.UserType}
 			res.Data = member
-			fmt.Println("get success!")
+			log.Println("get success!")
 			c.JSON(http.StatusOK, res)
 		}
 
@@ -98,7 +98,7 @@ func GetsUser(c *gin.Context) {
 		}
 		res.Code = code
 		res.Data.MemberList = members
-		fmt.Println("gets success!")
+		log.Println("gets success!")
 		c.JSON(http.StatusOK, res)
 	}
 }
